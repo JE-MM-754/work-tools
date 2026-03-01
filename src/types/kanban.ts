@@ -6,6 +6,11 @@ export interface Task {
   project: string;
   tags: string[];
   status: 'ideas' | 'start' | 'inProgress' | 'complete';
+  agentSessionId?: string;
+  agentStatus?: 'running' | 'completed' | 'error' | 'paused';
+  progress?: number;
+  agentMessage?: string;
+  lastUpdated?: number;
 }
 
 export interface Column {

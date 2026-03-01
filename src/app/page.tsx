@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import KanbanBoard from '@/components/KanbanBoard';
@@ -14,142 +14,91 @@ export interface Task {
   project: string;
   tags: string[];
   status: 'ideas' | 'start' | 'inProgress' | 'complete';
+  agentSessionId?: string;
+  agentStatus?: 'running' | 'completed' | 'error' | 'paused';
+  progress?: number;
+  agentMessage?: string;
+  lastUpdated?: number;
+  runtime?: string;
+  totalTokens?: number;
 }
 
-const initialTasks: Task[] = [
-  // Ideas
+// Template tasks for the Ideas column
+const templateTasks: Task[] = [
   {
-    id: '1',
-    title: 'MVP Product Definition',
-    description: 'Define core features for CinchIT MVP',
+    id: 'template-1',
+    title: 'Build MVP Feature Set',
+    description: 'Define and prioritize core features for product MVP',
     priority: 'high',
     project: 'CinchIT',
     tags: ['strategy', 'product'],
     status: 'ideas'
   },
   {
-    id: '2',
-    title: 'AI Agent Architecture',
-    description: 'Design multi-agent system architecture',
-    priority: 'high',
+    id: 'template-2', 
+    title: 'Market Research & Analysis',
+    description: 'Comprehensive market analysis for target segment',
+    priority: 'medium',
     project: 'MetaForge',
-    tags: ['ai', 'architecture'],
+    tags: ['research', 'market'],
     status: 'ideas'
   },
   {
-    id: '3',
-    title: 'Target Company Research',
-    description: 'Research top 50 target companies for VP Sales roles',
-    priority: 'high',
-    project: 'Job Search',
-    tags: ['research', 'networking'],
+    id: 'template-3',
+    title: 'Sales Pipeline Optimization',
+    description: 'Analyze and optimize current sales funnel performance',
+    priority: 'medium',
+    project: 'Fractional Sales',
+    tags: ['sales', 'optimization'],
     status: 'ideas'
-  },
-  // Start/Launch
-  {
-    id: '4',
-    title: 'User Research & Validation',
-    description: 'Conduct user interviews for CinchIT pain points',
-    priority: 'high',
-    project: 'CinchIT',
-    tags: ['research', 'validation'],
-    status: 'start'
-  },
-  {
-    id: '5',
-    title: 'LLM Integration Pipeline',
-    description: 'Build pipeline for LLM model integration',
-    priority: 'high',
-    project: 'MetaForge',
-    tags: ['ai', 'development'],
-    status: 'start'
-  },
-  {
-    id: '6',
-    title: 'LinkedIn Profile Optimization',
-    description: 'Update LinkedIn with recent achievements',
-    priority: 'medium',
-    project: 'Job Search',
-    tags: ['linkedin', 'branding'],
-    status: 'start'
-  },
-  {
-    id: '7',
-    title: 'Interview Preparation',
-    description: 'Prepare MEDDPICC case studies and success stories',
-    priority: 'high',
-    project: 'Job Search',
-    tags: ['interviews', 'preparation'],
-    status: 'start'
-  },
-  // In Progress
-  {
-    id: '8',
-    title: 'Landing Page Development',
-    description: 'Build marketing landing page with waitlist',
-    priority: 'medium',
-    project: 'CinchIT',
-    tags: ['development', 'marketing'],
-    status: 'inProgress'
-  },
-  {
-    id: '9',
-    title: 'Enterprise Sales Deck',
-    description: 'Create compelling B2B sales presentation',
-    priority: 'medium',
-    project: 'MetaForge',
-    tags: ['sales', 'enterprise'],
-    status: 'inProgress'
-  },
-  // Complete
-  {
-    id: '10',
-    title: 'Beta Testing Program',
-    description: 'Launch closed beta with initial users',
-    priority: 'medium',
-    project: 'CinchIT',
-    tags: ['testing', 'beta'],
-    status: 'complete'
-  },
-  {
-    id: '11',
-    title: 'Demo Environment Setup',
-    description: 'Build sandbox demo for prospects',
-    priority: 'low',
-    project: 'MetaForge',
-    tags: ['demo', 'sales'],
-    status: 'complete'
-  },
-  {
-    id: '12',
-    title: 'Salary Negotiation Research',
-    description: 'Research market rates for $400k+ OTE roles',
-    priority: 'low',
-    project: 'Job Search',
-    tags: ['negotiation', 'research'],
-    status: 'complete'
-  },
-  {
-    id: '13',
-    title: 'Follow-up Email Templates',
-    description: 'Create templates for post-interview follow-ups',
-    priority: 'low',
-    project: 'Job Search',
-    tags: ['templates', 'communication'],
-    status: 'complete'
   }
 ];
 
 export default function Home() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>(templateTasks);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
+
+  // Fetch real agents on mount and set up polling
+  useEffect(() => {
+    const fetchRealAgents = async () => {
+      try {
+        const response = await fetch('/api/real-agents');
+        const data = await response.json();
+        
+        if (data.success) {
+          // Merge real agents with template tasks
+          const realAgents = data.tasks || [];
+          const allTasks = [...templateTasks, ...realAgents];
+          setTasks(allTasks);
+          setError(null);
+        } else {
+          setError(data.error || 'Failed to load agents');
+        }
+      } catch (err) {
+        console.error('Error fetching real agents:', err);
+        setError('Failed to connect to agent API');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    // Initial load
+    fetchRealAgents();
+
+    // Poll for updates every 10 seconds
+    const interval = setInterval(fetchRealAgents, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleDragStart = (event: DragStartEvent) => {
     const task = tasks.find(t => t.id === event.active.id);
     setActiveTask(task || null);
   };
 
-  const handleDragEnd = (event: DragEndEvent) => {
+  const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     
     if (!over) {
@@ -163,9 +112,65 @@ export default function Home() {
     // Only allow drag from Ideas to Start/Launch
     const task = tasks.find(t => t.id === taskId);
     if (task && task.status === 'ideas' && newStatus === 'start') {
+      // Update task status to "start" immediately
       setTasks(prev => prev.map(t => 
-        t.id === taskId ? { ...t, status: newStatus } : t
+        t.id === taskId ? { ...t, status: 'start' } : t
       ));
+
+      try {
+        // Spawn real agent
+        console.log('🚀 Spawning real agent for task:', task.title);
+        
+        const spawnResponse = await fetch('/api/spawn-agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            taskId: task.id,
+            title: task.title,
+            description: task.description,
+            project: task.project,
+            tags: task.tags,
+            priority: task.priority
+          })
+        });
+
+        const spawnResult = await spawnResponse.json();
+        
+        if (spawnResult.success) {
+          console.log('✅ Agent spawned successfully:', spawnResult.sessionId);
+          
+          // Update task with agent info and move to "inProgress"
+          setTasks(prev => prev.map(t => 
+            t.id === taskId ? { 
+              ...t, 
+              status: 'inProgress',
+              agentSessionId: spawnResult.sessionId,
+              agentStatus: 'running',
+              progress: 5,
+              agentMessage: `${spawnResult.agentType} agent started`,
+              lastUpdated: Date.now()
+            } : t
+          ));
+        } else {
+          console.error('❌ Agent spawn failed:', spawnResult.error);
+          
+          // Revert task to ideas on failure
+          setTasks(prev => prev.map(t => 
+            t.id === taskId ? { ...t, status: 'ideas' } : t
+          ));
+          
+          setError(`Failed to spawn agent: ${spawnResult.error}`);
+        }
+      } catch (err) {
+        console.error('❌ Error spawning agent:', err);
+        
+        // Revert task to ideas on error
+        setTasks(prev => prev.map(t => 
+          t.id === taskId ? { ...t, status: 'ideas' } : t
+        ));
+        
+        setError('Failed to connect to agent spawning service');
+      }
     }
     
     setActiveTask(null);
@@ -183,11 +188,42 @@ export default function Home() {
     ));
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading real agents...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <h1 className="text-2xl font-bold text-gray-900">Work Tools</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Work Tools 
+              <span className="text-sm font-normal text-gray-600 ml-2">
+                • Live Agent Dashboard
+              </span>
+            </h1>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-600">
+                  {tasks.filter(t => t.agentStatus === 'running').length} agents running
+                </span>
+              </div>
+              {error && (
+                <div className="bg-red-100 text-red-700 px-3 py-1 rounded-md text-sm">
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </header>
 
