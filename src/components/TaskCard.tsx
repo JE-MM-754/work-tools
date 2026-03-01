@@ -2,143 +2,162 @@
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Task } from '@/app/page';
+import { Task } from '@/types/kanban';
+import { useState, useEffect } from 'react';
 
 interface TaskCardProps {
   task: Task;
-  isDragging?: boolean;
-  showControls?: boolean;
   onPauseTask?: (taskId: string) => void;
   onCancelTask?: (taskId: string) => void;
+  onRetryTask?: (taskId: string) => void;
+  onViewOutput?: (task: Task) => void;
 }
 
-const priorityColors = {
-  low: 'bg-gray-100 text-gray-700 border-gray-200',
-  medium: 'bg-yellow-100 text-yellow-700 border-yellow-200',
-  high: 'bg-red-100 text-red-700 border-red-200'
-};
+export default function TaskCard({ task, onPauseTask, onCancelTask, onRetryTask, onViewOutput }: TaskCardProps) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: task.id });
+  const [elapsed, setElapsed] = useState('');
 
-const projectColors = {
-  'CinchIT': 'bg-blue-500',
-  'MetaForge': 'bg-purple-500',
-  'Job Search': 'bg-green-500'
-};
-
-export default function TaskCard({ 
-  task, 
-  isDragging = false, 
-  showControls = false,
-  onPauseTask,
-  onCancelTask 
-}: TaskCardProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging: isSortableDragging,
-  } = useSortable({ id: task.id });
+  useEffect(() => {
+    if (task.agentStatus !== 'running' || !task.agentStartedAt) return;
+    const update = () => {
+      const secs = Math.floor((Date.now() - new Date(task.agentStartedAt!).getTime()) / 1000);
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      setElapsed(m > 0 ? `${m}m ${s}s` : `${s}s`);
+    };
+    update();
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, [task.agentStatus, task.agentStartedAt]);
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    opacity: isDragging ? 0.5 : 1,
   };
 
-  const isCurrentlyDragging = isDragging || isSortableDragging;
-  const canDrag = task.status === 'ideas';
+  const priorityColors: Record<string, string> = {
+    high: 'bg-red-100 text-red-700',
+    medium: 'bg-orange-100 text-orange-700',
+    low: 'bg-gray-100 text-gray-600',
+  };
+
+  const projectColors: Record<string, string> = {
+    CinchIT: 'text-blue-600',
+    MetaForge: 'text-purple-600',
+    'Job Search': 'text-green-600',
+  };
+
+  const statusBadge = () => {
+    switch (task.agentStatus) {
+      case 'spawning':
+        return <span className="inline-flex items-center gap-1 text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full"><span className="animate-spin inline-block w-3 h-3 border-2 border-yellow-400 border-t-transparent rounded-full"></span>Spawning</span>;
+      case 'running':
+        return <span className="inline-flex items-center gap-1 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full"><span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>Running {elapsed && `(${elapsed})`}</span>;
+      case 'paused':
+        return <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Paused</span>;
+      case 'completed':
+        return <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Complete</span>;
+      case 'error':
+        return <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Error</span>;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div
       ref={setNodeRef}
       style={style}
-      {...(canDrag ? attributes : {})}
-      {...(canDrag ? listeners : {})}
-      className={`
-        bg-white rounded-lg shadow-sm border p-4 space-y-3
-        ${canDrag ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}
-        ${isCurrentlyDragging ? 'opacity-50 rotate-3 scale-105' : 'hover:shadow-md'}
-        ${!canDrag ? 'opacity-75' : ''}
-        transition-all duration-200
-      `}
+      {...attributes}
+      {...listeners}
+      className={`bg-white rounded-lg border border-gray-200 p-3 shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing ${task.agentStatus === 'spawning' ? 'ring-2 ring-yellow-300' : ''}`}
     >
-      {/* Header */}
-      <div className="flex items-start justify-between">
-        <h3 className="font-medium text-gray-900 text-sm leading-tight">{task.title}</h3>
-        <span className={`px-2 py-1 rounded text-xs font-medium border ${priorityColors[task.priority]}`}>
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h3 className="font-medium text-gray-900 text-sm leading-tight flex-1">{task.title}</h3>
+        <span className={`text-xs px-1.5 py-0.5 rounded ${priorityColors[task.priority]}`}>
           {task.priority}
         </span>
       </div>
 
-      {/* Description */}
-      <p className="text-gray-600 text-sm">{task.description}</p>
+      {task.description && (
+        <p className="text-xs text-gray-500 mb-2 line-clamp-2">{task.description}</p>
+      )}
 
-      {/* Project */}
-      <div className="flex items-center space-x-2">
-        <div className={`w-3 h-3 rounded-full ${projectColors[task.project as keyof typeof projectColors] || 'bg-gray-400'}`}></div>
-        <span className="text-sm font-medium text-gray-700">{task.project}</span>
+      <div className="flex items-center gap-1.5 mb-2">
+        <span className={`text-xs font-medium ${projectColors[task.project] || 'text-gray-600'}`}>
+          {task.project}
+        </span>
       </div>
 
-      {/* Tags */}
-      <div className="flex flex-wrap gap-1">
-        {task.tags.map(tag => (
-          <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Agent Status & Progress */}
-      {task.agentSessionId && (
-        <div className="space-y-2 p-2 bg-blue-50 rounded border">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className={`w-2 h-2 rounded-full ${
-                task.agentStatus === 'running' ? 'bg-green-400 animate-pulse' :
-                task.agentStatus === 'completed' ? 'bg-blue-500' :
-                task.agentStatus === 'error' ? 'bg-red-500' : 'bg-gray-400'
-              }`}></div>
-              <span className="text-xs font-medium text-gray-700">
-                {task.agentStatus === 'running' ? 'Agent Running' :
-                 task.agentStatus === 'completed' ? 'Completed' :
-                 task.agentStatus === 'error' ? 'Error' : 'Unknown'}
-              </span>
-            </div>
-            {task.runtime && (
-              <span className="text-xs text-gray-500">{task.runtime}</span>
-            )}
-          </div>
-          
-          {task.progress !== undefined && task.progress > 0 && (
-            <div className="w-full bg-gray-200 rounded-full h-1.5">
-              <div 
-                className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
-                style={{ width: `${Math.min(task.progress, 100)}%` }}
-              ></div>
-            </div>
-          )}
-          
-          {task.agentMessage && (
-            <p className="text-xs text-gray-600">{task.agentMessage}</p>
-          )}
+      {task.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1 mb-2">
+          {task.tags.map(tag => (
+            <span key={tag} className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">{tag}</span>
+          ))}
         </div>
       )}
 
-      {/* Controls for In Progress tasks */}
-      {showControls && (
-        <div className="flex space-x-2 pt-2 border-t">
-          <button
-            onClick={() => onPauseTask?.(task.id)}
-            className="flex-1 px-3 py-2 text-sm bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200 transition-colors"
-          >
-            ⏸️ Pause
-          </button>
-          <button
-            onClick={() => onCancelTask?.(task.id)}
-            className="flex-1 px-3 py-2 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
-          >
-            ❌ Cancel
-          </button>
+      {/* Agent Status Section */}
+      {task.agentStatus && (
+        <div className="mt-2 pt-2 border-t border-gray-100">
+          <div className="flex items-center justify-between">
+            {statusBadge()}
+            {task.agentType && <span className="text-xs text-gray-400">{task.agentType}</span>}
+          </div>
+
+          {task.agentError && (
+            <p className="text-xs text-red-600 mt-1 line-clamp-2">{task.agentError}</p>
+          )}
+
+          {/* Control Buttons */}
+          <div className="flex items-center gap-1 mt-2" onPointerDown={e => e.stopPropagation()}>
+            {task.agentStatus === 'running' && (
+              <>
+                {onPauseTask && (
+                  <button onClick={() => onPauseTask(task.id)} className="text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded text-gray-600">
+                    Pause
+                  </button>
+                )}
+                {onCancelTask && (
+                  <button onClick={() => onCancelTask(task.id)} className="text-xs px-2 py-1 bg-red-50 hover:bg-red-100 rounded text-red-600">
+                    Cancel
+                  </button>
+                )}
+              </>
+            )}
+            {task.agentStatus === 'paused' && onPauseTask && (
+              <button onClick={() => onPauseTask(task.id)} className="text-xs px-2 py-1 bg-blue-50 hover:bg-blue-100 rounded text-blue-600">
+                Resume
+              </button>
+            )}
+            {task.agentStatus === 'error' && onRetryTask && (
+              <button onClick={() => onRetryTask(task.id)} className="text-xs px-2 py-1 bg-yellow-50 hover:bg-yellow-100 rounded text-yellow-700">
+                Retry
+              </button>
+            )}
+            {(task.agentStatus === 'completed' || task.agentStatus === 'error') && onViewOutput && (
+              <button onClick={() => onViewOutput(task)} className="text-xs px-2 py-1 bg-blue-50 hover:bg-blue-100 rounded text-blue-600">
+                View Output
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Non-agent task controls for inProgress/start */}
+      {!task.agentStatus && task.status === 'inProgress' && (
+        <div className="flex items-center gap-1 mt-2 pt-2 border-t border-gray-100" onPointerDown={e => e.stopPropagation()}>
+          {onPauseTask && (
+            <button onClick={() => onPauseTask(task.id)} className="text-xs px-2 py-1 bg-yellow-50 hover:bg-yellow-100 rounded text-yellow-700 flex items-center gap-1">
+              Pause
+            </button>
+          )}
+          {onCancelTask && (
+            <button onClick={() => onCancelTask(task.id)} className="text-xs px-2 py-1 bg-red-50 hover:bg-red-100 rounded text-red-600 flex items-center gap-1">
+              Cancel
+            </button>
+          )}
         </div>
       )}
     </div>
