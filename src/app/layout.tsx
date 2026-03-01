@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Kanban Dashboard",
-  description: "AI-Powered Kanban Dashboard with agent spawning and task automation",
+  title: "Work Tools",
+  description: "Simple Kanban board for project management",
 };
 
 export default function RootLayout({

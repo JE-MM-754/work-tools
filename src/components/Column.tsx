@@ -1,86 +1,54 @@
-"use client";
+'use client';
 
-import { useDroppable } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { Column as ColumnType } from "@/types/kanban";
-import TaskCard from "./TaskCard";
+import { useDroppable } from '@dnd-kit/core';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import TaskCard from './TaskCard';
+import { Task } from '@/app/page';
 
-interface Props {
-  column: ColumnType;
-  onPauseTask?: (taskId: string) => void;
-  onCancelTask?: (taskId: string) => void;
-  onRetryTask?: (taskId: string) => void;
+interface ColumnProps {
+  id: string;
+  title: string;
+  color: string;
+  tasks: Task[];
+  onPauseTask: (taskId: string) => void;
+  onCancelTask: (taskId: string) => void;
 }
 
-export default function Column({ column, onPauseTask, onCancelTask, onRetryTask }: Props) {
+export default function Column({ id, title, color, tasks, onPauseTask, onCancelTask }: ColumnProps) {
   const { setNodeRef, isOver } = useDroppable({
-    id: column.id,
-    data: { type: "column", column },
+    id,
   });
 
-  const taskIds = column.tasks.map((t) => t.id);
-  const activeCount = column.tasks.filter(
-    (t) => t.agent && (t.agent.status === "running" || t.agent.status === "spawning")
-  ).length;
-
   return (
-    <div
-      className={`flex flex-col min-w-[280px] max-w-[320px] rounded-2xl transition-all duration-200
-        ${isOver ? "ring-2 ring-blue-500/40 bg-dark-700/50" : "bg-dark-800/50"}
-        border border-white/5`}
-    >
-      {/* Column Header */}
-      <div className="px-4 py-3 border-b border-white/5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">{column.icon}</span>
-            <h2 className="text-sm font-semibold text-gray-200">{column.title}</h2>
-          </div>
-          <div className="flex items-center gap-1.5">
-            {activeCount > 0 && (
-              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-950 text-blue-400 animate-pulse">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                {activeCount} active
-              </span>
-            )}
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-dark-600 text-gray-400">
-              {column.tasks.length}
-            </span>
-          </div>
-        </div>
-        {column.id === "start" && (
-          <p className="text-[10px] text-gray-600 mt-1">
-            Drop tasks here to spawn AI agents
-          </p>
-        )}
+    <div className="flex flex-col h-full">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="font-semibold text-gray-900 text-lg">{title}</h2>
+        <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+          {tasks.length} tasks
+        </span>
       </div>
-
-      {/* Task List */}
+      
       <div
         ref={setNodeRef}
-        className={`flex-1 p-2 space-y-2 min-h-[200px] overflow-y-auto transition-colors duration-200
-          ${isOver ? "bg-blue-500/5" : ""}`}
+        className={`
+          flex-1 min-h-96 p-4 rounded-lg border-2 border-dashed transition-colors
+          ${color}
+          ${isOver ? 'border-blue-400 bg-blue-100' : ''}
+        `}
       >
-        <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
-          {column.tasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task}
-              onPause={onPauseTask}
-              onCancel={onCancelTask}
-              onRetry={onRetryTask}
-            />
-          ))}
-        </SortableContext>
-
-        {column.tasks.length === 0 && (
-          <div className={`flex items-center justify-center h-24 rounded-xl border-2 border-dashed transition-colors
-            ${isOver ? "border-blue-500/40 bg-blue-500/5" : "border-white/5"}`}>
-            <p className="text-xs text-gray-600">
-              {column.id === "start" ? "Drop to launch agent" : "Drop tasks here"}
-            </p>
+        <SortableContext items={tasks.map(t => t.id)} strategy={verticalListSortingStrategy}>
+          <div className="space-y-3">
+            {tasks.map(task => (
+              <TaskCard 
+                key={task.id} 
+                task={task}
+                onPauseTask={onPauseTask}
+                onCancelTask={onCancelTask}
+                showControls={id === 'inProgress'}
+              />
+            ))}
           </div>
-        )}
+        </SortableContext>
       </div>
     </div>
   );
