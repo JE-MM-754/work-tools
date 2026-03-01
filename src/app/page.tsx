@@ -1,142 +1,237 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import KanbanBoard from '@/components/KanbanBoard';
 import TaskCard from '@/components/TaskCard';
+import AgentOutputModal from '@/components/AgentOutputModal';
+import { ToastProvider, useToast } from '@/components/Toast';
+import { Task } from '@/types/kanban';
 
-export interface Task {
-  id: string;
-  title: string;
-  description: string;
-  priority: 'low' | 'medium' | 'high';
-  project: string;
-  tags: string[];
-  status: 'ideas' | 'start' | 'inProgress' | 'complete';
-  agentSessionId?: string;
-  agentStatus?: 'running' | 'completed' | 'error' | 'paused';
-  progress?: number;
-  agentMessage?: string;
-  lastUpdated?: number;
-  runtime?: string;
-  totalTokens?: number;
-}
-
-// Template tasks for the Ideas column
-const templateTasks: Task[] = [
+const initialTasks: Task[] = [
+  // IDEAS - Tasks ready to be launched
   {
-    id: 'template-1',
-    title: 'Build MVP Feature Set',
-    description: 'Define and prioritize core features for product MVP',
+    id: '1',
+    title: 'MetaForge Revenue Model',
+    description: 'Build detailed revenue projection model for MetaForge gaming platform',
+    priority: 'high',
+    project: 'MetaForge',
+    tags: ['revenue', 'financial-model'],
+    status: 'ideas',
+  },
+  {
+    id: '2',
+    title: 'AI Agent Architecture',
+    description: 'Design multi-agent system architecture for CinchIT platform',
     priority: 'high',
     project: 'CinchIT',
-    tags: ['strategy', 'product'],
-    status: 'ideas'
+    tags: ['architecture', 'design'],
+    status: 'ideas',
   },
   {
-    id: 'template-2', 
-    title: 'Market Research & Analysis',
-    description: 'Comprehensive market analysis for target segment',
+    id: '3',
+    title: 'Target Company Research',
+    description: 'Research top 50 target companies for VP Sales roles',
+    priority: 'high',
+    project: 'Job Search',
+    tags: ['research', 'networking'],
+    status: 'ideas',
+  },
+  // START/LAUNCH - Queued for agent spawning
+  {
+    id: '4',
+    title: 'LinkedIn Profile Optimization',
+    description: 'Update LinkedIn with recent achievements and AI expertise positioning',
     priority: 'medium',
-    project: 'MetaForge',
-    tags: ['research', 'market'],
-    status: 'ideas'
+    project: 'Job Search',
+    tags: ['linkedin', 'branding'],
+    status: 'start',
+  },
+  // IN PROGRESS - Active agents working
+  {
+    id: '5',
+    title: 'CinchIT Pitch Package',
+    description: 'Create compelling B2B sales presentation for CinchIT managed services',
+    priority: 'high',
+    project: 'CinchIT',
+    tags: ['sales', 'enterprise'],
+    status: 'inProgress',
+    agentSessionId: 'agent-cinchit-pitch',
+    agentStatus: 'running',
+    agentType: 'Research Agent',
+    agentRuntime: 'subagent',
+    agentStartedAt: new Date(Date.now() - 45 * 60000).toISOString(),
   },
   {
-    id: 'template-3',
-    title: 'Sales Pipeline Optimization',
-    description: 'Analyze and optimize current sales funnel performance',
-    priority: 'medium',
-    project: 'Fractional Sales',
-    tags: ['sales', 'optimization'],
-    status: 'ideas'
-  }
+    id: '6',
+    title: 'Fractional Sales Intelligence',
+    description: 'Research fractional VP Sales market rates, positioning strategies, and outreach frameworks',
+    priority: 'high',
+    project: 'Job Search',
+    tags: ['research', 'fractional'],
+    status: 'inProgress',
+    agentSessionId: 'agent-fractional-intel',
+    agentStatus: 'running',
+    agentType: 'Research Agent',
+    agentRuntime: 'subagent',
+    agentStartedAt: new Date(Date.now() - 30 * 60000).toISOString(),
+  },
+  {
+    id: '7',
+    title: 'AI Kanban Deployment',
+    description: 'Deploy and configure the AI-powered kanban dashboard with live agent integration',
+    priority: 'high',
+    project: 'CinchIT',
+    tags: ['deployment', 'development'],
+    status: 'inProgress',
+    agentSessionId: 'agent-kanban-deploy',
+    agentStatus: 'running',
+    agentType: 'Code Agent',
+    agentRuntime: 'acp',
+    agentStartedAt: new Date(Date.now() - 20 * 60000).toISOString(),
+  },
+  {
+    id: '8',
+    title: 'Fractional Business Framework',
+    description: 'Build comprehensive fractional sales leadership framework with service tiers and pricing',
+    priority: 'high',
+    project: 'Job Search',
+    tags: ['framework', 'business'],
+    status: 'inProgress',
+    agentSessionId: 'agent-fractional-framework',
+    agentStatus: 'running',
+    agentType: 'Research Agent',
+    agentRuntime: 'subagent',
+    agentStartedAt: new Date(Date.now() - 55 * 60000).toISOString(),
+  },
+  // COMPLETE - Finished work
+  {
+    id: '9',
+    title: 'TrueFoundry Strategic Analysis',
+    description: 'Complete strategic analysis of TrueFoundry partnership opportunities and market positioning',
+    priority: 'high',
+    project: 'Job Search',
+    tags: ['strategy', 'analysis'],
+    status: 'complete',
+    agentSessionId: 'agent-truefoundry',
+    agentStatus: 'completed',
+    agentType: 'Research Agent',
+    agentRuntime: 'subagent',
+    agentStartedAt: new Date(Date.now() - 120 * 60000).toISOString(),
+    agentCompletedAt: new Date(Date.now() - 60 * 60000).toISOString(),
+    agentOutput: 'Strategic analysis complete. TrueFoundry represents strong partnership opportunity in MLOps space. Key findings: $50M+ TAM, growing 40% YoY, 3 decision-maker contacts identified.',
+  },
+  {
+    id: '10',
+    title: 'Interview Preparation',
+    description: 'Prepare MEDDPICC case studies and success stories for upcoming interviews',
+    priority: 'high',
+    project: 'Job Search',
+    tags: ['interviews', 'preparation'],
+    status: 'complete',
+    agentStatus: 'completed',
+    agentType: 'Research Agent',
+    agentOutput: 'MEDDPICC framework documentation complete with 4 case studies prepared.',
+  },
+  {
+    id: '11',
+    title: 'Salary Negotiation Research',
+    description: 'Research market rates for $400k+ OTE roles in AI/SaaS sales leadership',
+    priority: 'low',
+    project: 'Job Search',
+    tags: ['negotiation', 'research'],
+    status: 'complete',
+    agentStatus: 'completed',
+    agentType: 'Research Agent',
+    agentOutput: 'Market analysis: VP Sales AI/SaaS median OTE $380-450k. Top quartile $500k+.',
+  },
 ];
 
-export default function Home() {
-  const [tasks, setTasks] = useState<Task[]>(templateTasks);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+function KanbanApp() {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
+  const [outputModalTask, setOutputModalTask] = useState<Task | null>(null);
+  const { addToast } = useToast();
 
-  // Fetch real agents on mount and set up polling
+  // Poll active agents every 30 seconds
   useEffect(() => {
-    const fetchRealAgents = async () => {
+    const poll = async () => {
+      const activeTasks = tasks.filter(t => t.agentStatus === 'running' && t.agentSessionId);
+      if (activeTasks.length === 0) return;
+
+      const sessionIds = activeTasks.map(t => t.agentSessionId).join(',');
       try {
-        const response = await fetch('/api/real-agents');
-        const data = await response.json();
-        
-        if (data.success) {
-          // Merge real agents with template tasks
-          const realAgents = data.tasks || [];
-          const allTasks = [...templateTasks, ...realAgents];
-          setTasks(allTasks);
-          setError(null);
-        } else {
-          setError(data.error || 'Failed to load agents');
+        const resp = await fetch(`/api/agent-status?sessionIds=${sessionIds}`);
+        if (!resp.ok) return;
+        const data = await resp.json();
+
+        if (data.sessions && data.sessions.length > 0) {
+          setTasks(prev => prev.map(task => {
+            const session = data.sessions.find((s: { sessionId: string }) => s.sessionId === task.agentSessionId);
+            if (!session) return task;
+
+            if (session.status === 'completed' && task.agentStatus !== 'completed') {
+              addToast(`Agent completed: "${task.title}"`, 'success');
+              return {
+                ...task,
+                status: 'complete' as const,
+                agentStatus: 'completed' as const,
+                agentOutput: session.output || task.agentOutput,
+                agentCompletedAt: new Date().toISOString(),
+              };
+            }
+            if (session.status === 'error' && task.agentStatus !== 'error') {
+              addToast(`Agent error: "${task.title}"`, 'error');
+              return { ...task, agentStatus: 'error' as const, agentError: session.error };
+            }
+            return task;
+          }));
         }
-      } catch (err) {
-        console.error('Error fetching real agents:', err);
-        setError('Failed to connect to agent API');
-      } finally {
-        setLoading(false);
+      } catch {
+        // Silent fail - offline mode
       }
     };
 
-    // Initial load
-    fetchRealAgents();
-
-    // Poll for updates every 10 seconds
-    const interval = setInterval(fetchRealAgents, 10000);
-
+    poll();
+    const interval = setInterval(poll, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [tasks, addToast]);
 
   const handleDragStart = (event: DragStartEvent) => {
     const task = tasks.find(t => t.id === event.active.id);
     setActiveTask(task || null);
   };
 
-  const handleDragEnd = async (event: DragEndEvent) => {
+  const handleDragEnd = useCallback(async (event: DragEndEvent) => {
     const { active, over } = event;
-    
-    if (!over) {
-      setActiveTask(null);
-      return;
-    }
+    if (!over) { setActiveTask(null); return; }
 
     const taskId = active.id as string;
     const overId = over.id as string;
-
-    // Determine target column - over.id could be a column id or a task id
     const columnIds = ['ideas', 'start', 'inProgress', 'complete'];
-    let targetStatus: Task['status'];
 
+    let targetStatus: Task['status'];
     if (columnIds.includes(overId)) {
       targetStatus = overId as Task['status'];
     } else {
-      // Dropped on a task card - find which column that task belongs to
       const overTask = tasks.find(t => t.id === overId);
-      if (!overTask) {
-        setActiveTask(null);
-        return;
-      }
+      if (!overTask) { setActiveTask(null); return; }
       targetStatus = overTask.status;
     }
 
-    // Only allow drag from Ideas to Start/Launch
     const task = tasks.find(t => t.id === taskId);
-    if (task && task.status === 'ideas' && targetStatus === 'start') {
+    if (!task) { setActiveTask(null); return; }
+
+    // Allow Ideas -> Start/Launch (triggers agent spawn)
+    if (task.status === 'ideas' && targetStatus === 'start') {
       setTasks(prev => prev.map(t =>
-        t.id === taskId ? { ...t, status: targetStatus } : t
+        t.id === taskId ? { ...t, status: 'start' as const, agentStatus: 'spawning' as const } : t
       ));
+      addToast(`Spawning agent for "${task.title}"...`, 'info');
 
       try {
-        // Spawn real agent
-        console.log('🚀 Spawning real agent for task:', task.title);
-        
-        const spawnResponse = await fetch('/api/spawn-agent', {
+        const resp = await fetch('/api/spawn-agent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -145,115 +240,230 @@ export default function Home() {
             description: task.description,
             project: task.project,
             tags: task.tags,
-            priority: task.priority
-          })
+          }),
         });
+        const data = await resp.json();
 
-        const spawnResult = await spawnResponse.json();
-        
-        if (spawnResult.success) {
-          console.log('✅ Agent spawned successfully:', spawnResult.sessionId);
-          
-          // Update task with agent info and move to "inProgress"
-          setTasks(prev => prev.map(t => 
-            t.id === taskId ? { 
-              ...t, 
-              status: 'inProgress',
-              agentSessionId: spawnResult.sessionId,
-              agentStatus: 'running',
-              progress: 5,
-              agentMessage: `${spawnResult.agentType} agent started`,
-              lastUpdated: Date.now()
+        if (data.success) {
+          setTasks(prev => prev.map(t =>
+            t.id === taskId ? {
+              ...t,
+              status: 'inProgress' as const,
+              agentSessionId: data.sessionId,
+              agentStatus: 'running' as const,
+              agentType: data.agentType,
+              agentRuntime: data.runtime,
+              agentStartedAt: new Date().toISOString(),
             } : t
           ));
+          addToast(`Agent running for "${task.title}"`, 'success');
         } else {
-          console.error('❌ Agent spawn failed:', spawnResult.error);
-          
-          // Revert task to ideas on failure
-          setTasks(prev => prev.map(t => 
-            t.id === taskId ? { ...t, status: 'ideas' } : t
+          setTasks(prev => prev.map(t =>
+            t.id === taskId ? {
+              ...t,
+              status: 'start' as const,
+              agentStatus: 'error' as const,
+              agentError: data.error || 'Failed to spawn agent',
+            } : t
           ));
-          
-          setError(`Failed to spawn agent: ${spawnResult.error}`);
+          addToast(`Spawn failed: ${data.error}`, 'error');
         }
       } catch (err) {
-        console.error('❌ Error spawning agent:', err);
-        
-        // Revert task to ideas on error
-        setTasks(prev => prev.map(t => 
-          t.id === taskId ? { ...t, status: 'ideas' } : t
+        setTasks(prev => prev.map(t =>
+          t.id === taskId ? {
+            ...t,
+            status: 'start' as const,
+            agentStatus: 'error' as const,
+            agentError: err instanceof Error ? err.message : 'Network error',
+          } : t
         ));
-        
-        setError('Failed to connect to agent spawning service');
+        addToast('Agent spawn failed - network error', 'error');
       }
     }
 
     setActiveTask(null);
-  };
+  }, [tasks, addToast]);
 
-  const handlePauseTask = (taskId: string) => {
-    setTasks(prev => prev.map(t => 
-      t.id === taskId ? { ...t, status: 'start' } : t
+  const handlePauseTask = useCallback(async (taskId: string) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    if (task.agentStatus === 'paused') {
+      // Resume
+      try {
+        await fetch('/api/control-agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: task.agentSessionId, action: 'resume' }),
+        });
+        setTasks(prev => prev.map(t =>
+          t.id === taskId ? { ...t, agentStatus: 'running' as const } : t
+        ));
+        addToast(`Resumed "${task.title}"`, 'info');
+      } catch {
+        addToast('Failed to resume agent', 'error');
+      }
+    } else if (task.agentStatus === 'running') {
+      // Pause
+      try {
+        await fetch('/api/control-agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: task.agentSessionId, action: 'pause' }),
+        });
+        setTasks(prev => prev.map(t =>
+          t.id === taskId ? { ...t, agentStatus: 'paused' as const } : t
+        ));
+        addToast(`Paused "${task.title}"`, 'info');
+      } catch {
+        addToast('Failed to pause agent', 'error');
+      }
+    } else {
+      // Legacy behavior: move back to start
+      setTasks(prev => prev.map(t =>
+        t.id === taskId ? { ...t, status: 'start' as const } : t
+      ));
+    }
+  }, [tasks, addToast]);
+
+  const handleCancelTask = useCallback(async (taskId: string) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    if (task.agentSessionId) {
+      try {
+        await fetch('/api/control-agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: task.agentSessionId, action: 'cancel' }),
+        });
+      } catch {
+        // Still cancel locally
+      }
+    }
+
+    setTasks(prev => prev.map(t =>
+      t.id === taskId ? {
+        ...t,
+        status: 'ideas' as const,
+        agentSessionId: undefined,
+        agentStatus: undefined,
+        agentType: undefined,
+        agentRuntime: undefined,
+        agentStartedAt: undefined,
+        agentError: undefined,
+      } : t
     ));
-  };
+    addToast(`Cancelled "${task?.title}"`, 'warning');
+  }, [tasks, addToast]);
 
-  const handleCancelTask = (taskId: string) => {
-    setTasks(prev => prev.map(t => 
-      t.id === taskId ? { ...t, status: 'ideas' } : t
+  const handleRetryTask = useCallback(async (taskId: string) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    // Reset and re-spawn
+    setTasks(prev => prev.map(t =>
+      t.id === taskId ? {
+        ...t,
+        status: 'start' as const,
+        agentStatus: 'spawning' as const,
+        agentError: undefined,
+        agentSessionId: undefined,
+      } : t
     ));
-  };
+    addToast(`Retrying "${task.title}"...`, 'info');
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading real agents...</p>
-        </div>
-      </div>
-    );
-  }
+    try {
+      const resp = await fetch('/api/spawn-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          taskId: task.id,
+          title: task.title,
+          description: task.description,
+          project: task.project,
+          tags: task.tags,
+        }),
+      });
+      const data = await resp.json();
+
+      if (data.success) {
+        setTasks(prev => prev.map(t =>
+          t.id === taskId ? {
+            ...t,
+            status: 'inProgress' as const,
+            agentSessionId: data.sessionId,
+            agentStatus: 'running' as const,
+            agentType: data.agentType,
+            agentRuntime: data.runtime,
+            agentStartedAt: new Date().toISOString(),
+          } : t
+        ));
+        addToast(`Agent retried for "${task.title}"`, 'success');
+      } else {
+        setTasks(prev => prev.map(t =>
+          t.id === taskId ? { ...t, agentStatus: 'error' as const, agentError: data.error } : t
+        ));
+        addToast(`Retry failed: ${data.error}`, 'error');
+      }
+    } catch {
+      setTasks(prev => prev.map(t =>
+        t.id === taskId ? { ...t, agentStatus: 'error' as const, agentError: 'Network error on retry' } : t
+      ));
+    }
+  }, [tasks, addToast]);
+
+  const activeAgentCount = tasks.filter(t => t.agentStatus === 'running').length;
+  const completedAgentCount = tasks.filter(t => t.agentStatus === 'completed').length;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Work Tools 
-              <span className="text-sm font-normal text-gray-600 ml-2">
-                • Live Agent Dashboard
+      <div className="max-w-7xl mx-auto">
+        <div className="px-4 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold text-gray-900">Work Tools</h1>
+            <p className="text-xs text-gray-500">AI Agent Orchestration Dashboard</p>
+          </div>
+          <div className="flex items-center gap-3 text-xs">
+            {activeAgentCount > 0 && (
+              <span className="flex items-center gap-1 bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full">
+                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                {activeAgentCount} agent{activeAgentCount !== 1 ? 's' : ''} running
               </span>
-            </h1>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-600">
-                  {tasks.filter(t => t.agentStatus === 'running').length} agents running
-                </span>
-              </div>
-              {error && (
-                <div className="bg-red-100 text-red-700 px-3 py-1 rounded-md text-sm">
-                  {error}
-                </div>
-              )}
-            </div>
+            )}
+            {completedAgentCount > 0 && (
+              <span className="bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
+                {completedAgentCount} completed
+              </span>
+            )}
           </div>
         </div>
-      </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-          <KanbanBoard 
-            tasks={tasks} 
+          <KanbanBoard
+            tasks={tasks}
             onPauseTask={handlePauseTask}
             onCancelTask={handleCancelTask}
+            onRetryTask={handleRetryTask}
+            onViewOutput={setOutputModalTask}
           />
           <DragOverlay>
-            {activeTask ? <TaskCard task={activeTask} isDragging /> : null}
+            {activeTask && <TaskCard task={activeTask} />}
           </DragOverlay>
         </DndContext>
-      </main>
+      </div>
+
+      {outputModalTask && (
+        <AgentOutputModal task={outputModalTask} onClose={() => setOutputModalTask(null)} />
+      )}
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <ToastProvider>
+      <KanbanApp />
+    </ToastProvider>
   );
 }
