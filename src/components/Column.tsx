@@ -3,51 +3,40 @@
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import TaskCard from './TaskCard';
-import { Task } from '@/app/page';
+import { Task } from '@/types/kanban';
 
 interface ColumnProps {
   id: string;
   title: string;
   color: string;
   tasks: Task[];
-  onPauseTask: (taskId: string) => void;
-  onCancelTask: (taskId: string) => void;
+  onPauseTask?: (taskId: string) => void;
+  onCancelTask?: (taskId: string) => void;
+  onRetryTask?: (taskId: string) => void;
+  onViewOutput?: (task: Task) => void;
 }
 
-export default function Column({ id, title, color, tasks, onPauseTask, onCancelTask }: ColumnProps) {
-  const { setNodeRef, isOver } = useDroppable({
-    id,
-  });
+export default function Column({ id, title, color, tasks, onPauseTask, onCancelTask, onRetryTask, onViewOutput }: ColumnProps) {
+  const { setNodeRef, isOver } = useDroppable({ id });
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="font-semibold text-gray-900 text-lg">{title}</h2>
-        <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-          {tasks.length} tasks
-        </span>
+    <div className={`rounded-xl border-2 ${color} p-3 min-h-[200px] transition-all ${isOver ? 'ring-2 ring-blue-400 scale-[1.01]' : ''}`}>
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="font-semibold text-gray-700 text-sm">{title}</h2>
+        <span className="text-xs text-gray-400">{tasks.length} tasks</span>
       </div>
-      
-      <div
-        ref={setNodeRef}
-        className={`
-          flex-1 min-h-96 p-4 rounded-lg border-2 border-dashed transition-colors
-          ${color}
-          ${isOver ? 'border-blue-400 bg-blue-100' : ''}
-        `}
-      >
+      <div ref={setNodeRef} className="space-y-2 min-h-[100px]">
         <SortableContext items={tasks.map(t => t.id)} strategy={verticalListSortingStrategy}>
-          <div className="space-y-3">
-            {tasks.map(task => (
-              <TaskCard 
-                key={task.id} 
-                task={task}
-                onPauseTask={onPauseTask}
-                onCancelTask={onCancelTask}
-                showControls={id === 'inProgress'}
-              />
-            ))}
-          </div>
+          {tasks.map(task => (
+            <TaskCard
+              key={task.id}
+              task={task}
+              onPauseTask={onPauseTask}
+              onCancelTask={onCancelTask}
+              onRetryTask={onRetryTask}
+              onViewOutput={onViewOutput}
+            />
+          ))}
         </SortableContext>
       </div>
     </div>
