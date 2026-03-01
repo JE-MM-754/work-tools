@@ -1,8 +1,8 @@
 {
-  "name": "ai-kanban-dashboard",
+  "name": "work-tools",
   "version": "2.0.0",
   "private": true,
-  "description": "AI-Powered Kanban Dashboard with agent spawning and task automation",
+  "description": "Simple 4-column Kanban board for project management",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
