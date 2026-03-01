@@ -9,9 +9,10 @@ interface KanbanBoardProps {
   onCancelTask?: (taskId: string) => void;
   onRetryTask?: (taskId: string) => void;
   onViewOutput?: (task: Task) => void;
+  onNotesClick?: (taskId: string) => void;
 }
 
-export default function KanbanBoard({ tasks, onPauseTask, onCancelTask, onRetryTask, onViewOutput }: KanbanBoardProps) {
+export default function KanbanBoard({ tasks, onPauseTask, onCancelTask, onRetryTask, onViewOutput, onNotesClick }: KanbanBoardProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
       {columns.map(col => (
@@ -25,6 +26,7 @@ export default function KanbanBoard({ tasks, onPauseTask, onCancelTask, onRetryT
           onCancelTask={onCancelTask}
           onRetryTask={onRetryTask}
           onViewOutput={onViewOutput}
+          onNotesClick={onNotesClick}
         />
       ))}
     </div>
