@@ -117,68 +117,29 @@ const formatTokens = (tokens?: number): string => {
   return `${tokens} tokens`;
 };
 
-// Simulate calling OpenClaw subagents API
+// Fetch real OpenClaw subagents via server-side API call
 const fetchSubagents = async (): Promise<OpenClawSubagent[]> => {
-  // In a real implementation, this would call the OpenClaw API
-  // For now, we'll simulate the data we just saw
-  
-  // This would be replaced with actual API call:
-  // const response = await fetch(`${process.env.OPENCLAW_API_URL}/subagents`, {
-  //   headers: { 'Authorization': `Bearer ${process.env.OPENCLAW_API_KEY}` }
-  // });
-  
-  // Simulating the real data we just fetched
-  return [
-    {
-      index: 1,
-      runId: "790f9b45-237a-4e01-bccf-bec4761563dd",
-      sessionKey: "agent:main:subagent:04bd6645-fb4a-4fc2-a951-294663b3bf52",
-      label: "Complete Steam + Reddit API setup and deploy AI Kanban Phase 2 live agent spawning",
-      task: "Complete Steam + Reddit API setup and deploy AI Kanban Phase 2 live agent spawning to work-tools.vercel.app. Test full workflow: drag task → real agent spawns → progress tracking. Make fully functional.",
-      status: "running",
-      runtime: "1m",
-      runtimeMs: 60000,
-      model: "anthropic/claude-sonnet-4-20250514",
-      totalTokens: 41871,
-      startedAt: Date.now() - 60000
-    },
-    {
-      index: 2,
-      runId: "445b6741-04c7-4bd7-a555-3eefc145ea2e", 
-      sessionKey: "agent:main:subagent:295ef247-7075-468c-bc12-9d368fa50845",
-      label: "Intelligence research on Jamie's 10-15 warm CEO prospects from interview pipeline",
-      task: "Intelligence research on Jamie's 10-15 warm CEO prospects from interview pipeline. Build comprehensive dossiers with company analysis, decision maker profiles, and strategic outreach recommendations for fractional sales business development.",
-      status: "running",
-      runtime: "2m",
-      runtimeMs: 120000,
-      model: "anthropic/claude-sonnet-4-20250514",
-      startedAt: Date.now() - 120000
-    },
-    {
-      index: 3,
-      runId: "6129a929-a8c0-400d-824d-c0b58a165631",
-      sessionKey: "agent:main:subagent:891a2521-34b7-41fd-84b5-8bd4433508f0",
-      label: "Prepare complete CinchIT pitch package for Jay Small revenue call",
-      task: "Prepare complete CinchIT pitch package for Jay Small revenue call. Create compelling presentation deck, demo script, pricing strategy, and objection handling guide. Focus on ROI for small business automation.",
-      status: "running", 
-      runtime: "2m",
-      runtimeMs: 130000,
-      model: "anthropic/claude-sonnet-4-20250514",
-      startedAt: Date.now() - 130000
-    },
-    {
-      index: 4,
-      runId: "409bb1f4-a4d3-447e-b151-4290debe90f7",
-      sessionKey: "agent:main:subagent:5d076e42-ba92-4ce3-8253-ed603d4fe891", 
-      label: "Complete TrueFoundry Material Review & Strategic Analysis due March 2",
-      task: "Complete TrueFoundry Material Review & Strategic Analysis due March 2. Research company background, competitive landscape, technical architecture, market positioning, and prepare strategic questions for interview.",
-      status: "running",
-      runtime: "3m", 
-      runtimeMs: 180000,
-      model: "anthropic/claude-sonnet-4-20250514",
-      startedAt: Date.now() - 180000
+  try {
+    // Make internal API call to get subagents data
+    const response = await fetch('http://localhost:3000/api/internal/subagents', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch subagents: ${response.status}`);
     }
-  ];
+    
+    const data = await response.json();
+    return data.subagents || [];
+    
+  } catch (error) {
+    console.error('❌ Failed to fetch real subagents:', error);
+    
+    // Fallback to empty array if real API fails
+    // In production, you might want to return cached data or show an error
+    return [];
+  }
 };
 
 export async function GET(request: NextRequest) {
