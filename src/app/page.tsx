@@ -107,14 +107,29 @@ export default function Home() {
     }
 
     const taskId = active.id as string;
-    const newStatus = over.id as Task['status'];
-    
+    const overId = over.id as string;
+
+    // Determine target column - over.id could be a column id or a task id
+    const columnIds = ['ideas', 'start', 'inProgress', 'complete'];
+    let targetStatus: Task['status'];
+
+    if (columnIds.includes(overId)) {
+      targetStatus = overId as Task['status'];
+    } else {
+      // Dropped on a task card - find which column that task belongs to
+      const overTask = tasks.find(t => t.id === overId);
+      if (!overTask) {
+        setActiveTask(null);
+        return;
+      }
+      targetStatus = overTask.status;
+    }
+
     // Only allow drag from Ideas to Start/Launch
     const task = tasks.find(t => t.id === taskId);
-    if (task && task.status === 'ideas' && newStatus === 'start') {
-      // Update task status to "start" immediately
-      setTasks(prev => prev.map(t => 
-        t.id === taskId ? { ...t, status: 'start' } : t
+    if (task && task.status === 'ideas' && targetStatus === 'start') {
+      setTasks(prev => prev.map(t =>
+        t.id === taskId ? { ...t, status: targetStatus } : t
       ));
 
       try {
@@ -172,7 +187,7 @@ export default function Home() {
         setError('Failed to connect to agent spawning service');
       }
     }
-    
+
     setActiveTask(null);
   };
 
