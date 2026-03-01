@@ -1,3 +1,24 @@
+export interface TextNote {
+  id: string;
+  htmlContent: string;
+  plainText: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface VoiceNote {
+  id: string;
+  audioDataUrl: string;
+  duration: number;
+  createdAt: string;
+  label?: string;
+}
+
+export interface TaskNotes {
+  textNotes: TextNote[];
+  voiceNotes: VoiceNote[];
+}
+
 export interface Task {
   id: string;
   title: string;
@@ -6,6 +27,8 @@ export interface Task {
   project: string;
   tags: string[];
   status: 'ideas' | 'start' | 'inProgress' | 'complete';
+  notes?: TaskNotes;
+  // Agent fields
   agentSessionId?: string;
   agentStatus?: 'spawning' | 'running' | 'paused' | 'completed' | 'error';
   agentRuntime?: string;
