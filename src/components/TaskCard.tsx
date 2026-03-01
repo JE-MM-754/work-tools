@@ -11,9 +11,10 @@ interface TaskCardProps {
   onCancelTask?: (taskId: string) => void;
   onRetryTask?: (taskId: string) => void;
   onViewOutput?: (task: Task) => void;
+  onNotesClick?: (taskId: string) => void;
 }
 
-export default function TaskCard({ task, onPauseTask, onCancelTask, onRetryTask, onViewOutput }: TaskCardProps) {
+export default function TaskCard({ task, onPauseTask, onCancelTask, onRetryTask, onViewOutput, onNotesClick }: TaskCardProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: task.id });
   const [elapsed, setElapsed] = useState('');
 
@@ -65,6 +66,8 @@ export default function TaskCard({ task, onPauseTask, onCancelTask, onRetryTask,
     }
   };
 
+  const noteCount = (task.notes?.textNotes?.length || 0) + (task.notes?.voiceNotes?.length || 0);
+
   return (
     <div
       ref={setNodeRef}
@@ -97,6 +100,21 @@ export default function TaskCard({ task, onPauseTask, onCancelTask, onRetryTask,
           ))}
         </div>
       )}
+
+      {/* Notes Badge */}
+      <div className="flex items-center gap-2 mb-1" onPointerDown={e => e.stopPropagation()}>
+        <button
+          onClick={() => onNotesClick?.(task.id)}
+          className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md transition-colors ${
+            noteCount > 0
+              ? 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200'
+              : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600 border border-gray-200'
+          }`}
+        >
+          <span className="text-[11px]">&#9998;</span>
+          {noteCount > 0 ? `${noteCount} note${noteCount !== 1 ? 's' : ''}` : 'Add note'}
+        </button>
+      </div>
 
       {/* Agent Status Section */}
       {task.agentStatus && (
