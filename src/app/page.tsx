@@ -6,8 +6,9 @@ import { arrayMove } from '@dnd-kit/sortable';
 import KanbanBoard from '@/components/KanbanBoard';
 import TaskCard from '@/components/TaskCard';
 import AgentOutputModal from '@/components/AgentOutputModal';
+import NotesModal from '@/components/NotesModal';
 import { ToastProvider, useToast } from '@/components/Toast';
-import { Task } from '@/types/kanban';
+import { Task, TaskNotes } from '@/types/kanban';
 
 const initialTasks: Task[] = [
   // IDEAS - Tasks ready to be launched
@@ -152,6 +153,7 @@ function KanbanApp() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [outputModalTask, setOutputModalTask] = useState<Task | null>(null);
+  const [notesModalTask, setNotesModalTask] = useState<Task | null>(null);
   const { addToast } = useToast();
 
   // Poll active agents every 30 seconds
@@ -413,6 +415,19 @@ function KanbanApp() {
     }
   }, [tasks, addToast]);
 
+  const handleNotesClick = useCallback((taskId: string) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (task) setNotesModalTask(task);
+  }, [tasks]);
+
+  const handleUpdateNotes = useCallback((taskId: string, notes: TaskNotes) => {
+    setTasks(prev => prev.map(t =>
+      t.id === taskId ? { ...t, notes } : t
+    ));
+    // Keep modal task in sync
+    setNotesModalTask(prev => prev && prev.id === taskId ? { ...prev, notes } : prev);
+  }, []);
+
   const activeAgentCount = tasks.filter(t => t.agentStatus === 'running').length;
   const completedAgentCount = tasks.filter(t => t.agentStatus === 'completed').length;
 
@@ -446,6 +461,7 @@ function KanbanApp() {
             onCancelTask={handleCancelTask}
             onRetryTask={handleRetryTask}
             onViewOutput={setOutputModalTask}
+            onNotesClick={handleNotesClick}
           />
           <DragOverlay>
             {activeTask && <TaskCard task={activeTask} />}
@@ -455,6 +471,14 @@ function KanbanApp() {
 
       {outputModalTask && (
         <AgentOutputModal task={outputModalTask} onClose={() => setOutputModalTask(null)} />
+      )}
+
+      {notesModalTask && (
+        <NotesModal
+          task={notesModalTask}
+          onClose={() => setNotesModalTask(null)}
+          onUpdateNotes={handleUpdateNotes}
+        />
       )}
     </div>
   );
