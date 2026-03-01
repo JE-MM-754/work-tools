@@ -14,9 +14,10 @@ interface ColumnProps {
   onCancelTask?: (taskId: string) => void;
   onRetryTask?: (taskId: string) => void;
   onViewOutput?: (task: Task) => void;
+  onNotesClick?: (taskId: string) => void;
 }
 
-export default function Column({ id, title, color, tasks, onPauseTask, onCancelTask, onRetryTask, onViewOutput }: ColumnProps) {
+export default function Column({ id, title, color, tasks, onPauseTask, onCancelTask, onRetryTask, onViewOutput, onNotesClick }: ColumnProps) {
   const { setNodeRef, isOver } = useDroppable({ id });
 
   return (
@@ -35,6 +36,7 @@ export default function Column({ id, title, color, tasks, onPauseTask, onCancelT
               onCancelTask={onCancelTask}
               onRetryTask={onRetryTask}
               onViewOutput={onViewOutput}
+              onNotesClick={onNotesClick}
             />
           ))}
         </SortableContext>
