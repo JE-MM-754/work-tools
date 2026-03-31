@@ -11,6 +11,8 @@ const sequence = [
   'Thu 4/2, 4:30 to 5:00 PM ET, Executive Interview with Alex',
 ];
 
+const openingPositioning = `I sit at the intersection of product, solutions, and enterprise revenue. I have led sales and solution engineering, sold complex transformation into enterprise environments, and helped improve GTM rigor and execution. What makes Fiddler interesting to me is that this is a real infrastructure problem emerging as AI moves from experimentation into production, where trust, control, and governance actually become buying criteria.`;
+
 const companySignals = [
   {
     title: 'Current wedge',
@@ -77,7 +79,7 @@ const conversationMap = [
     interviewer: 'Fahad Rizqi',
     lens: 'Executive GTM, category maturity, enterprise sales judgment',
     bestAngle: 'Technical-commercial enterprise seller who can turn category complexity into repeatable revenue motion.',
-    bestStories: ['Enterprise transformation / executive selling', 'Process or win-rate improvement'],
+    bestStories: ['AT&T / $1.5M F50 expansion', 'MEDDPICC, win-rate improvement, forecasting, and cycle acceleration'],
     biggestRisk: 'Sounding generic on AI or shallow on why Fiddler matters now.',
     question: 'Where do you think the market is right now, still education-heavy, or have buyers started actively budgeting for observability, guardrails, and governance?',
   },
@@ -93,7 +95,7 @@ const conversationMap = [
     interviewer: 'Alex',
     lens: 'Likely field execution and team fit, but profile still needs confirmation',
     bestAngle: 'Technical-commercial leader who can help customers understand hard problems and move complex deals forward with discipline.',
-    bestStories: ['Enterprise transformation / executive selling', 'Sales plus SE hybrid credibility'],
+    bestStories: ['AT&T / $1.5M F50 expansion', 'Sales plus SE hybrid credibility'],
     biggestRisk: 'Over-prepping against a guessed profile and recycling Fahad answers word for word.',
     question: 'What traits do your best customer-facing people share today?',
   },
@@ -125,9 +127,18 @@ const likelyQuestions = [
   },
 ];
 
+const valueQuantQuestions = [
+  'What business process or customer workflow would break first if the AI system made a high-confidence wrong decision in production?',
+  'Where does the current cost show up most clearly today, incident response, manual review, compliance burden, customer-facing errors, or slowed deployment velocity?',
+  'How are you currently quantifying risk from hallucinations, unsafe actions, policy violations, or untraceable model behavior?',
+  'If observability and guardrails worked perfectly tomorrow, what operational metric would improve first, deployment speed, incident volume, audit readiness, engineering time, or customer trust?',
+  'Which executives actually feel this pain in economic terms today, CIO, CTO, CISO, legal, compliance, or business unit leaders?',
+  'Where do promising AI initiatives stall internally right now, trust, governance, production reliability, ownership, or proving ROI?',
+];
+
 const questionsByInterviewer = {
   Fahad: [
-    'Where do you think the market is today, still heavy education, or are buyers now actively budgeting for observability, guardrails, and governance?',
+    'Where do you think the market is right now, still education-heavy, or have buyers started actively budgeting for observability, guardrails, and governance?',
     'What separates the deals you win fastest from the ones that stall?',
     'What does the next stage of GTM maturity need most, pipeline creation, sharper messaging, better technical proof, or tighter execution?',
   ],
@@ -145,12 +156,12 @@ const questionsByInterviewer = {
 
 const storyPlan = [
   {
-    title: 'Story 1: Complex project you are proud of',
-    body: 'Prepare one strong example that shows a hard cross-functional problem, your role, the complexity, how you influenced stakeholders, and the business outcome.',
+    title: 'Story 1: AT&T / $1.5M F50 expansion',
+    body: 'Use the AT&T enterprise expansion story. Frame the complexity, the stakeholder map, the executive alignment, the ROI case, and the $1.5M outcome. Land the point that you can sell measurable transformation into a large enterprise buying environment.',
   },
   {
-    title: 'Story 2: Feedback and growth',
-    body: 'Prepare a real example of tough feedback you received, how you processed it, what changed in your behavior, and what improved because of it.',
+    title: 'Story 2: MEDDPICC / win-rate / forecasting / cycle speed',
+    body: 'Use the process-rigor story. Frame the shift to MEDDPICC, how win rates improved, how forecasting got tighter, how sales cycles sped up, and how the team got better at disqualifying bad ICPs and weak POCs. Land the point that you build a cleaner revenue machine, not just personal pipeline.',
   },
   {
     title: 'Story 3: Startup-style ownership',
@@ -188,7 +199,12 @@ export default function FiddlerInterviewPrepPage() {
           </p>
         </div>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+        <section className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Opening positioning</h2>
+          <p className="mt-4 leading-7 text-slate-200">{openingPositioning}</p>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-2xl font-semibold text-white">Sequence</h2>
           <ol className="mt-4 space-y-3 text-slate-300">
             {sequence.map((item, index) => (
@@ -255,6 +271,15 @@ export default function FiddlerInterviewPrepPage() {
               <li className="flex gap-3"><span className="mt-1 text-amber-300">•</span><span>Fiddler wants to win by being more enterprise, more unified, and more governance-first than fragmented point tools.</span></li>
             </ul>
           </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Customer discovery questions to quantify value</h2>
+          <ol className="mt-4 space-y-3 text-slate-300">
+            {valueQuantQuestions.map((item, index) => (
+              <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
+            ))}
+          </ol>
         </section>
 
         <section className="mt-10">
