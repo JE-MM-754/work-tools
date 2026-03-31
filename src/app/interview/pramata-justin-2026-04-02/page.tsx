@@ -109,6 +109,36 @@ const internalNotes = [
   'Relevant names mentioned: Deloitte, Bain, AT&T and others',
 ];
 
+const mockAnswers = [
+  {
+    q: 'Best answer: Why Pramata?',
+    a: 'Pramata is interesting because this is not fake AI demand. The company sits on a real, expensive business problem. Contracts hold the actual commercial truth around pricing, obligations, renewals, compliance, and expansion, but most enterprises cannot operationalize that truth fast enough across Legal, Finance, Sales, and Ops. What makes Pramata compelling is that it is not only solving contract organization. It is turning contract intelligence into something the business can actually use, inside workflows, decisions, and AI systems. From what I have heard, there is also a real opportunity to build more system and rigor into GTM, and that is exactly the kind of work I like doing.',
+  },
+  {
+    q: 'Best answer: Why you?',
+    a: 'My edge is that I am not only a seller and not only a technical operator. I bridge the two. I have led sales and solution engineering, sold complex enterprise transformation, improved win rates with process rigor, and built AI-driven systems that make teams faster and more effective. That matters here because Pramata looks like a business where product depth, cross-functional selling, and GTM process all matter at the same time. I can help in the room with buyers, but I can also help build the machine behind the room.',
+  },
+  {
+    q: 'Best answer: How would you build GTM here?',
+    a: 'I would start by mapping the full commercial system, not just top-of-funnel. Tighten ICP and segmentation around accounts where contract complexity and revenue leakage are mission critical. Sharpen messaging by persona so Legal, Finance, RevOps, and Sales each see their own business case. Then inspect conversion and handoffs. If the business had supply-side friction and is now more demand constrained, the answer is not only more pipeline. It is a cleaner operating system from qualification through implementation and expansion. Then install stage discipline, MEDDPICC quality, mutual action plans, and proof-driven selling.',
+  },
+];
+
+const storyRehearsals = [
+  {
+    title: 'Story 1: Enterprise expansion and executive selling',
+    body: 'Use your Unsupervised expansion win. Frame a complex enterprise environment, multiple stakeholders, CFO-grade ROI alignment, and the $1.5M F50 expansion outcome. Land the point that you know how to sell measurable transformation, not just product features.',
+  },
+  {
+    title: 'Story 2: Process transformation and win-rate improvement',
+    body: 'Use the MEDDPICC and win-rate story. Frame a team that needed more rigor and repeatability, the structure you helped build, and the move from 16% to 43% win rates. Land the point that you do not only carry a bag. You help build the operating discipline that lifts the whole team.',
+  },
+  {
+    title: 'Story 3: AI systems-builder who understands workflows',
+    body: 'Use your multi-agent, Deepwork, or outbound system examples. Frame messy inputs across notes, calls, workflows, and systems, then show how you built a usable process layer that created faster action and better coordination. Land the point that you can turn unstructured complexity into operational leverage.',
+  },
+];
+
 export default function PramataJustinInterviewPrepPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -192,6 +222,30 @@ export default function PramataJustinInterviewPrepPage() {
               <div key={item.q} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
                 <h3 className="text-lg font-semibold text-cyan-300">{item.q}</h3>
                 <p className="mt-2 leading-7 text-slate-300">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Mock interview answer sheet</h2>
+          <div className="mt-4 space-y-5">
+            {mockAnswers.map((item) => (
+              <div key={item.q} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="text-lg font-semibold text-emerald-300">{item.q}</h3>
+                <p className="mt-2 leading-7 text-slate-300">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Three stories to rehearse</h2>
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            {storyRehearsals.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="text-lg font-semibold text-cyan-300">{item.title}</h3>
+                <p className="mt-2 leading-7 text-slate-300">{item.body}</p>
               </div>
             ))}
           </div>
