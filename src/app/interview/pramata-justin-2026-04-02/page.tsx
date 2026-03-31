@@ -11,8 +11,12 @@ const companySignals = [
     body: 'Pramata is selling contract intelligence, not just CLM. Their positioning is that contracts hold the commercial context layer needed for renewals, pricing enforcement, revenue protection, compliance, and now AI agents.',
   },
   {
-    title: 'Why this matters now',
-    body: 'They are reframing around the agentic enterprise. That means the winner is not the tool with generic AI frosting, it is the platform with trusted structured context that can power downstream systems and workflows.',
+    title: 'What Chris said operationally',
+    body: 'The company is growing around 20 to 30 percent, needs more of a real GTM system, and the opportunity sounds more like process-building than lone-wolf hero selling.',
+  },
+  {
+    title: 'Constraint picture',
+    body: 'Your notes say CPQ is demand constrained, CLV is supply constrained, and Pramata is currently demand constrained partly because supply had been an issue in the past. That means Justin may care a lot about how you think about throughput, readiness, and scalable execution.',
   },
   {
     title: 'Where the ROI lives',
@@ -22,11 +26,16 @@ const companySignals = [
     title: 'Likely buyer map',
     body: 'Legal often owns the initial pain, but Finance, RevOps, Sales Ops, and business leaders feel the budget-worthy pain. This is a cross-functional enterprise sale, not a single-thread legal-tech deal.',
   },
+  {
+    title: 'Commercial ambition',
+    body: 'One internal note points to a near-term direct sales target of roughly 3 to 4M in the next planning period. That reinforces that Justin may be hiring for structured GTM lift, not just logo hunting.',
+  },
 ];
 
 const justinSignals = [
   'Early Pramata operator with deep tenure across product, customer ops, consulting, and GTM',
   'Current CRO who also leads sales, marketing, and strategic partnerships',
+  'Because of his operational scope, some people may talk about him almost like a COO',
   'Prior background in M&A due diligence and contract management at Husch Blackwell',
   'Likely values candidates who can bridge product truth, implementation reality, and commercial outcomes',
   'Unlikely to be impressed by generic VP Sales talk without category-specific pattern recognition',
@@ -38,6 +47,7 @@ const yourAngles = [
   'Credible on revenue architecture, MEDDPICC discipline, win-rate improvement, and post-sale operationalization',
   'Differentiated by actually building AI-driven workflows, not just selling AI slides',
   'Can tell a sharp story around turning messy systems and notes into usable commercial intelligence',
+  'Should explicitly position around process, system-building, and scaling GTM rigor in a 20 to 30 percent growth environment',
 ];
 
 const likelyQuestions = [
@@ -57,20 +67,25 @@ const likelyQuestions = [
     q: 'How do you sell into cross-functional enterprise deals?',
     a: 'Start with the pain owner, map adjacent stakeholders fast, quantify the economic cost of the current state, surface the operational blockers, and create a shared business case that each function can defend internally. Then control the process hard.',
   },
+  {
+    q: 'How would you help build more GTM system here?',
+    a: 'I would look at the full chain, messaging, qualification, stage discipline, handoffs, implementation readiness, and expansion motion. If the business has had supply-side friction and is now demand constrained, then the answer is not only more top of funnel. It is building a cleaner system that converts and scales without breaking downstream.',
+  },
 ];
 
 const questionsToAsk = [
   'How has Pramata’s messaging shifted from CLM or repository language toward contract intelligence for the agentic enterprise, and what is landing most with buyers right now?',
-  'In your best deals, who usually feels the pain first, and who ultimately becomes the economic buyer?',
-  'Where do deals usually stall today, category education, stakeholder alignment, implementation anxiety, or proving measurable ROI?',
-  'What separates your highest-performing reps or leaders at Pramata from the ones who struggle?',
+  'When you say the business needs more GTM systemization, where is the biggest gap today, pipeline creation, qualification, deal control, implementation handoff, or expansion?',
+  'How do you currently think about the balance between demand constraints and supply constraints across the business?',
+  'What does the 3 to 4M direct sales target actually require to become repeatable, more coverage, better process, tighter ICP, stronger partnerships, or something else?',
+  'How do Deloitte, Bain, AT&T, and similar logos factor into the go-to-market story today, proof points, partnerships, target accounts, or category credibility?',
   'If I joined and we looked back in 6 months, what specific outcomes would make you say this was a strong hire?',
 ];
 
 const prepPlan = [
   'Tonight: read this page end to end once, then tighten your 90-second Why Pramata answer and one cross-functional enterprise win story.',
   'Tomorrow morning: rehearse 3 stories, one enterprise expansion, one process transformation, one AI workflow / systems-building example.',
-  'Tomorrow afternoon: do a 20-minute mock focused on CRO-level questions, category credibility, and objection handling.',
+  'Tomorrow afternoon: do a 20-minute mock focused on CRO-level questions, category credibility, GTM system-building, and objection handling.',
   'Thursday morning: review the red flags, your questions for Justin, and the closing statement you want to leave him with.',
   'Right before the call: skim only the cheat sheet section, not the whole site. Show up sharp, not overloaded.',
 ];
@@ -80,7 +95,18 @@ const redFlags = [
   'Do not over-index on AI buzzwords without tying them to contract data, workflow, and measurable business outcomes.',
   'Do not make this sound like a legal-only category. The money case is broader than Legal.',
   'Do not ramble on your background. Keep the narrative tight and commercial.',
+  'Do not miss the process angle. Your notes suggest this role is about building systems, not just closing your own bag.',
   'Do not leave without asking how he defines success for the role and what the real bottlenecks are today.',
+];
+
+const internalNotes = [
+  'Growing around 20 to 30 percent',
+  'Needs more of a system around GTM',
+  'Currently demand constrained, partly because supply had been an issue in the past',
+  'CPQ is demand constrained',
+  'CLV is supply constrained',
+  'Near-term direct sales target around 3 to 4M',
+  'Relevant names mentioned: Deloitte, Bain, AT&T and others',
 ];
 
 export default function PramataJustinInterviewPrepPage() {
@@ -92,12 +118,12 @@ export default function PramataJustinInterviewPrepPage() {
           <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Pramata x Justin Schweisberger</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
             Thursday, April 2 at 3:00 PM ET. This conversation is about proving you can help sell a real economic pain,
-            across messy enterprise stakeholder groups, with the product depth and GTM discipline Justin is likely to respect.
+            across messy enterprise stakeholder groups, while also helping build the GTM system Justin likely needs.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
             <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">CRO conversation</span>
             <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">Enterprise contract intelligence</span>
-            <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">Cross-functional ROI story</span>
+            <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">Process and building</span>
           </div>
         </div>
 
@@ -107,15 +133,24 @@ export default function PramataJustinInterviewPrepPage() {
             <p className="mt-3 text-slate-300">
               Pramata is compelling because it ties contract mess directly to revenue leakage, renewal risk, pricing errors,
               and slow selling. That is real budget territory. If you can show Justin you understand how to turn that pain
-              into repeatable enterprise wins, you are in the right lane.
+              into repeatable enterprise wins and a cleaner GTM system, you are in the right lane.
             </p>
           </div>
           <div className="rounded-2xl border border-amber-500/20 bg-amber-950/20 p-6">
             <h2 className="text-2xl font-semibold text-white">Your positioning in one line</h2>
             <p className="mt-3 text-slate-200">
               Product-minded enterprise revenue leader who can sell complex transformation, align cross-functional buyers,
-              and turn AI and data capability into measurable commercial outcomes.
+              and build the process, rigor, and operating cadence that make growth repeatable.
             </p>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-violet-500/20 bg-violet-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Chris notes, now part of the readout</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {internalNotes.map((item) => (
+              <div key={item} className="rounded-xl border border-slate-800 bg-slate-950 p-4 text-slate-300">{item}</div>
+            ))}
           </div>
         </section>
 
@@ -195,21 +230,26 @@ export default function PramataJustinInterviewPrepPage() {
             <p className="mt-4 leading-7 text-slate-300">
               What stands out to me about Pramata is that this is not abstract AI theater. You are solving a painful,
               economically important enterprise problem where product depth, stakeholder alignment, and GTM rigor all matter.
-              That intersection is where I have done my best work, and it is why this conversation is interesting to me.
+              From what I have heard, there is also a real opportunity to build more system and process into growth. That
+              combination is exactly where I do my best work.
             </p>
           </div>
         </section>
 
         <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-2xl font-semibold text-white">Cheat sheet</h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="mt-4 grid gap-4 md:grid-cols-4">
             <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
               <p className="text-sm uppercase tracking-widest text-slate-500">Lead with</p>
-              <p className="mt-2 text-slate-300">Cross-functional enterprise ROI, not generic quota talk.</p>
+              <p className="mt-2 text-slate-300">Cross-functional enterprise ROI and GTM system-building, not generic quota talk.</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
               <p className="text-sm uppercase tracking-widest text-slate-500">Prove</p>
               <p className="mt-2 text-slate-300">You can connect product truth to GTM execution and customer outcomes.</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
+              <p className="text-sm uppercase tracking-widest text-slate-500">Anchor on</p>
+              <p className="mt-2 text-slate-300">Process, building, throughput, and repeatability in a constrained growth system.</p>
             </div>
             <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
               <p className="text-sm uppercase tracking-widest text-slate-500">Finish with</p>
