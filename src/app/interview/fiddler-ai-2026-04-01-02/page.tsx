@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const sequence = [
   'Wed 4/1, 1:30 to 2:00 PM ET, Executive Interview with Fahad',
-  'Thu 4/2, 9:00 to 9:45 AM ET, Hiring Manager Screen with Nick',
+  'Thu 4/2, 9:00 to 9:45 AM ET, SE: Hiring Manager Screen with Nick Nolan',
   'Thu 4/2, 4:30 to 5:00 PM ET, Executive Interview with Alex',
 ];
 
@@ -56,9 +56,9 @@ const interviewerReadouts = [
     name: 'Nick Nolan',
     role: 'Solutions Engineering Manager',
     focus: [
-      'SE leadership lens with implementation, process, privacy, and customer-facing technical delivery depth',
-      'Likely tests discovery quality, technical communication, demo credibility, and partnership with solutions teams',
-      'Will care whether you elevate the SE org or create chaos for it',
+      'Will cover Fiddler vision, product, and the role, while also digging into your background and project history',
+      'Hiring manager lens is behavioral and partnership-heavy: how you approach complex problems, collaborate, influence product or customers, and grow from feedback',
+      'Will likely care less about trivia and more about whether you are thoughtful, coachable, startup-ready, and strong with cross-functional technical-commercial work',
     ],
   },
   {
@@ -105,9 +105,9 @@ const questionsByInterviewer = {
     'What does the next stage of GTM maturity need most, pipeline creation, sharper messaging, better technical proof, or tighter execution?',
   ],
   Nick: [
-    'What does great partnership between sales and SE look like at Fiddler today?',
-    'Where do technical evaluations usually get stuck, instrumentation, data access, stakeholder alignment, or proving ROI?',
-    'If someone joined this team and made your life easier in 60 days, what would they actually be doing?',
+    'What does success look like in this role over the first 90 days, especially in how it partners with Solutions Engineering?',
+    'What kinds of complex customer or internal problems have the strongest people on this team handled well?',
+    'When you think about someone thriving at Fiddler, what matters most, technical depth, communication, adaptability, startup ownership, or something else?',
   ],
   Alex: [
     'How are you thinking about scaling field execution as the category shifts from explainability toward control plane and agentic observability?',
@@ -118,17 +118,25 @@ const questionsByInterviewer = {
 
 const storyPlan = [
   {
-    title: 'Story 1: Enterprise AI transformation sale',
-    body: 'Use a story that shows you can sell technical transformation to executive stakeholders with business clarity, not just feature enthusiasm.',
+    title: 'Story 1: Complex project you are proud of',
+    body: 'Prepare one strong example that shows a hard cross-functional problem, your role, the complexity, how you influenced stakeholders, and the business outcome.',
   },
   {
-    title: 'Story 2: Win-rate or process improvement',
-    body: 'Use the MEDDPICC and operating rigor story to show you are not only a seller, you are a builder of repeatable execution.',
+    title: 'Story 2: Feedback and growth',
+    body: 'Prepare a real example of tough feedback you received, how you processed it, what changed in your behavior, and what improved because of it.',
   },
   {
-    title: 'Story 3: Sales + SE hybrid credibility',
-    body: 'Use a story that shows you can bridge commercial and technical teams without creating friction, especially in complex buyer environments.',
+    title: 'Story 3: Startup-style ownership',
+    body: 'Prepare a story that shows ambiguity, initiative, and willingness to build beyond a narrow job description. Nick will likely care about this more than polished theory.',
   },
+];
+
+const nickCallPlan = [
+  'Expect a high-context conversation, not a grilling. He wants to understand how you think, collaborate, and grow.',
+  'Lead with your current role and scope cleanly. Be specific about what you own, who you influence, and the types of customers and technical-commercial problems you handle.',
+  'Have 3 behavioral stories ready: a proud complex project, a collaboration or influence story, and a feedback-and-growth story.',
+  'Be ready to explain why you are exploring now, why Fiddler, and why a startup environment still fits you.',
+  'Do not over-index on sounding like the smartest AI infra guy in the room. Nick is explicitly looking for judgment, ownership, and partnership.',
 ];
 
 const redFlags = [
@@ -137,7 +145,7 @@ const redFlags = [
   'Do not talk about Fiddler like it is still only explainability or classic MLOps monitoring. The recent control plane repositioning matters.',
   'Do not use vague AI buzzwords. Stay tied to observability, guardrails, governance, and business impact.',
   'Do not sound like a seller who treats SE as demo support.',
-  'Do not give the same answer to Fahad and Nick. They are looking for different things.',
+  'Do not answer Nick like it is a deep product exam. The brief says this screen is also about how you collaborate, influence, grow, and operate in a startup.',
 ];
 
 export default function FiddlerInterviewPrepPage() {
@@ -221,6 +229,15 @@ export default function FiddlerInterviewPrepPage() {
           </div>
         </section>
 
+        <section className="mt-10 rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Nick hiring manager screen, actual call plan</h2>
+          <ol className="mt-4 space-y-3 text-slate-200">
+            {nickCallPlan.map((item, index) => (
+              <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
+            ))}
+          </ol>
+        </section>
+
         <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-2xl font-semibold text-white">Likely questions and answer direction</h2>
           <div className="mt-4 space-y-5">
@@ -285,7 +302,7 @@ export default function FiddlerInterviewPrepPage() {
             <h2 className="text-2xl font-semibold text-white">Sequence strategy</h2>
             <ul className="mt-4 space-y-3 text-slate-300">
               <li className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>With Fahad, emphasize market judgment, enterprise selling, and why the category matters now.</span></li>
-              <li className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>With Nick, emphasize discovery quality, SE respect, technical translation, and implementation realism.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>With Nick, emphasize current role scope, complex projects, collaboration, influence, growth from feedback, and startup motivation.</span></li>
               <li className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>With Alex, emphasize field execution, value communication, and how you fit a technical-commercial sales motion.</span></li>
               <li className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>Do not answer all three interviews the same way. Same core story, different angle.</span></li>
             </ul>
