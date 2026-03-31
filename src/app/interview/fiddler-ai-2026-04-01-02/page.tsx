@@ -17,6 +17,10 @@ const companySignals = [
     body: 'Fiddler has evolved from explainability into observability, guardrails, governance, and now an AI control plane for enterprise agents. That is a sharper and bigger story than generic model monitoring.',
   },
   {
+    title: 'Recent momentum',
+    body: 'In January 2026, Fiddler announced a $30M Series C and said total funding reached $100M. The company also claims revenue grew more than 4x in the last 18 months, which signals real traction behind the category shift.',
+  },
+  {
     title: 'What they want buyers to believe',
     body: 'As AI agents become more autonomous, enterprises need visibility, context, and control. Fiddler is pitching itself as the operating layer that helps companies monitor, diagnose, govern, and intervene before costly failures happen.',
   },
@@ -71,6 +75,7 @@ const interviewerReadouts = [
 const whyFiddler = [
   'This is not generic AI hype. Fiddler is attached to a painful enterprise need: if AI systems are driving decisions, teams need observability, control, and governance before those systems create reputational, operational, or regulatory damage.',
   'The category matters because enterprises are moving from model experiments to deployed agents and high-impact AI applications. That creates a real need for monitoring, intervention, and accountable operation.',
+  'Fiddler is now explicitly trying to own the control plane layer, not only the observability layer. That is a stronger and more strategic story if they can execute it.',
   'The company also sits in a strong ecosystem position through partners like Databricks, Google Cloud, AWS, NVIDIA, and Datadog, which helps validate both the category and the buyer urgency.',
 ];
 
@@ -118,7 +123,7 @@ const storyPlan = [
   },
   {
     title: 'Story 2: Win-rate or process improvement',
-    body: 'Use the MEDDPICC / operating rigor story to show you are not only a seller, you are a builder of repeatable execution.',
+    body: 'Use the MEDDPICC and operating rigor story to show you are not only a seller, you are a builder of repeatable execution.',
   },
   {
     title: 'Story 3: Sales + SE hybrid credibility',
@@ -129,6 +134,7 @@ const storyPlan = [
 const redFlags = [
   'Do not oversell yourself as a pure AI infrastructure expert if you cannot back it up technically.',
   'Do not make this only about model monitoring. Their story is broader now.',
+  'Do not talk about Fiddler like it is still only explainability or classic MLOps monitoring. The recent control plane repositioning matters.',
   'Do not use vague AI buzzwords. Stay tied to observability, guardrails, governance, and business impact.',
   'Do not sound like a seller who treats SE as demo support.',
   'Do not give the same answer to Fahad and Nick. They are looking for different things.',
@@ -174,6 +180,27 @@ export default function FiddlerInterviewPrepPage() {
             {whyFiddler.map((item) => (
               <p key={item} className="leading-7 text-slate-200">{item}</p>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-violet-500/20 bg-violet-950/20 p-6">
+            <h2 className="text-2xl font-semibold text-white">Recent achievements to know</h2>
+            <ul className="mt-4 space-y-3 text-slate-200">
+              <li className="flex gap-3"><span className="mt-1 text-violet-300">•</span><span>Raised a $30M Series C in January 2026 and says total funding is now $100M.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-violet-300">•</span><span>Claims revenue grew more than 4x in the last 18 months.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-violet-300">•</span><span>Highlights rapid adoption in regulated industries like healthcare, financial services, insurance, and government.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-violet-300">•</span><span>Mentions AWS Pattern Partner status and CB Insights recognition in AI Agent Security and Risk Management.</span></li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-amber-500/20 bg-amber-950/20 p-6">
+            <h2 className="text-2xl font-semibold text-white">Competitive frame</h2>
+            <ul className="mt-4 space-y-3 text-slate-200">
+              <li className="flex gap-3"><span className="mt-1 text-amber-300">•</span><span>Legacy or broader AI observability peers: Arize, WhyLabs, Arthur, TruEra, Aporia.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-amber-300">•</span><span>LLM and agent observability tools: Langfuse, LangSmith, Braintrust, Galileo, Helicone, Maxim AI.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-amber-300">•</span><span>Security and guardrails adjacent players: Patronus AI, Robust Intelligence, Lakera, Protect AI.</span></li>
+              <li className="flex gap-3"><span className="mt-1 text-amber-300">•</span><span>Fiddler wants to win by being more enterprise, more unified, and more governance-first than fragmented point tools.</span></li>
+            </ul>
           </div>
         </section>
 
