@@ -72,6 +72,33 @@ const interviewerReadouts = [
   },
 ];
 
+const conversationMap = [
+  {
+    interviewer: 'Fahad Rizqi',
+    lens: 'Executive GTM, category maturity, enterprise sales judgment',
+    bestAngle: 'Technical-commercial enterprise seller who can turn category complexity into repeatable revenue motion.',
+    bestStories: ['Enterprise transformation / executive selling', 'Process or win-rate improvement'],
+    biggestRisk: 'Sounding generic on AI or shallow on why Fiddler matters now.',
+    question: 'Where do you think the market is right now, still education-heavy, or have buyers started actively budgeting for observability, guardrails, and governance?',
+  },
+  {
+    interviewer: 'Nick Nolan',
+    lens: 'Hiring manager fit, collaboration, complexity handling, growth, startup readiness',
+    bestAngle: 'Technical-commercial operator who handles messy cross-functional problems well and works well with SE, product, and customers.',
+    bestStories: ['Complex project you are proud of', 'Feedback and growth'],
+    biggestRisk: 'Treating the screen like product trivia instead of a behavioral and partnership conversation.',
+    question: 'When you think about someone thriving in this role, what matters most, technical depth, communication, adaptability, startup ownership, or something else?',
+  },
+  {
+    interviewer: 'Alex',
+    lens: 'Likely field execution and team fit, but profile still needs confirmation',
+    bestAngle: 'Technical-commercial leader who can help customers understand hard problems and move complex deals forward with discipline.',
+    bestStories: ['Enterprise transformation / executive selling', 'Sales plus SE hybrid credibility'],
+    biggestRisk: 'Over-prepping against a guessed profile and recycling Fahad answers word for word.',
+    question: 'What traits do your best customer-facing people share today?',
+  },
+];
+
 const whyFiddler = [
   'This is not generic AI hype. Fiddler is attached to a painful enterprise need: if AI systems are driving decisions, teams need observability, control, and governance before those systems create reputational, operational, or regulatory damage.',
   'The category matters because enterprises are moving from model experiments to deployed agents and high-impact AI applications. That creates a real need for monitoring, intervention, and accountable operation.',
@@ -168,6 +195,24 @@ export default function FiddlerInterviewPrepPage() {
               <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
             ))}
           </ol>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Runnable conversation map</h2>
+          <div className="mt-4 space-y-5">
+            {conversationMap.map((item) => (
+              <div key={item.interviewer} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="text-lg font-semibold text-cyan-300">{item.interviewer}</h3>
+                <div className="mt-3 grid gap-3 md:grid-cols-2">
+                  <div><p className="text-xs uppercase tracking-widest text-slate-500">Lens</p><p className="mt-1 text-slate-300">{item.lens}</p></div>
+                  <div><p className="text-xs uppercase tracking-widest text-slate-500">Best angle</p><p className="mt-1 text-slate-300">{item.bestAngle}</p></div>
+                  <div><p className="text-xs uppercase tracking-widest text-slate-500">Best stories</p><ul className="mt-1 text-slate-300">{item.bestStories.map((story) => <li key={story}>• {story}</li>)}</ul></div>
+                  <div><p className="text-xs uppercase tracking-widest text-slate-500">Biggest risk</p><p className="mt-1 text-slate-300">{item.biggestRisk}</p></div>
+                </div>
+                <div className="mt-3"><p className="text-xs uppercase tracking-widest text-slate-500">Best question to ask</p><p className="mt-1 text-slate-200">{item.question}</p></div>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-10">

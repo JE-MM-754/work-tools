@@ -184,6 +184,35 @@ export default function PramataJustinInterviewPrepPage() {
           </div>
         </section>
 
+        <section className="mt-10 rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-6">
+          <h2 className="text-2xl font-semibold text-white">Runnable conversation map</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <p className="text-xs uppercase tracking-widest text-slate-500">Primary lens</p>
+              <p className="mt-2 text-slate-200">Process, GTM system-building, cross-functional commercial leadership</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <p className="text-xs uppercase tracking-widest text-slate-500">Best angle</p>
+              <p className="mt-2 text-slate-200">Product-minded enterprise revenue leader who can sell complex transformation and help build process, systemization, and GTM rigor.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <p className="text-xs uppercase tracking-widest text-slate-500">Best stories</p>
+              <ul className="mt-2 text-slate-200">
+                <li>• Process transformation / win-rate improvement</li>
+                <li>• Enterprise expansion / ROI story</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <p className="text-xs uppercase tracking-widest text-slate-500">Biggest risk</p>
+              <p className="mt-2 text-slate-200">Sounding like a generic sales leader instead of a system-builder who understands messy enterprise motions.</p>
+            </div>
+          </div>
+          <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-5">
+            <p className="text-xs uppercase tracking-widest text-slate-500">Best question to ask Justin</p>
+            <p className="mt-2 text-slate-200">When you say the business needs more GTM systemization, where is the biggest gap today, pipeline creation, qualification, implementation handoff, or expansion?</p>
+          </div>
+        </section>
+
         <section className="mt-10">
           <h2 className="mb-4 text-2xl font-semibold text-white">Company signals to know cold</h2>
           <div className="grid gap-4 md:grid-cols-2">
