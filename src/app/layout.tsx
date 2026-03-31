@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Work Tools',
-  description: 'AI Agent Orchestration Dashboard - Spawn, monitor, and manage AI agents',
+  description: 'AI Agent Orchestration Dashboard and interview prep microsites',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

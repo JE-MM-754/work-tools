@@ -1,0 +1,223 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Pramata x Justin Interview Prep',
+  description: 'Interview prep plan for Jamie Erickson ahead of his Pramata conversation with CRO Justin Schweisberger.',
+};
+
+const companySignals = [
+  {
+    title: 'What Pramata actually sells',
+    body: 'Pramata is selling contract intelligence, not just CLM. Their positioning is that contracts hold the commercial context layer needed for renewals, pricing enforcement, revenue protection, compliance, and now AI agents.',
+  },
+  {
+    title: 'Why this matters now',
+    body: 'They are reframing around the agentic enterprise. That means the winner is not the tool with generic AI frosting, it is the platform with trusted structured context that can power downstream systems and workflows.',
+  },
+  {
+    title: 'Where the ROI lives',
+    body: 'Their proof points are concrete: recaptured millions in revenue at McKesson, uncovered $3M ARR for a telecom customer, improved retention, increased active selling time, and reduced audit friction.',
+  },
+  {
+    title: 'Likely buyer map',
+    body: 'Legal often owns the initial pain, but Finance, RevOps, Sales Ops, and business leaders feel the budget-worthy pain. This is a cross-functional enterprise sale, not a single-thread legal-tech deal.',
+  },
+];
+
+const justinSignals = [
+  'Early Pramata operator with deep tenure across product, customer ops, consulting, and GTM',
+  'Current CRO who also leads sales, marketing, and strategic partnerships',
+  'Prior background in M&A due diligence and contract management at Husch Blackwell',
+  'Likely values candidates who can bridge product truth, implementation reality, and commercial outcomes',
+  'Unlikely to be impressed by generic VP Sales talk without category-specific pattern recognition',
+];
+
+const yourAngles = [
+  'Product-minded seller who can speak to legal, finance, sales, and exec stakeholders without hand-waving',
+  'Strong fit for complex enterprise transformation sales where data fragmentation and workflow pain drive ROI',
+  'Credible on revenue architecture, MEDDPICC discipline, win-rate improvement, and post-sale operationalization',
+  'Differentiated by actually building AI-driven workflows, not just selling AI slides',
+  'Can tell a sharp story around turning messy systems and notes into usable commercial intelligence',
+];
+
+const likelyQuestions = [
+  {
+    q: 'Why Pramata?',
+    a: 'Because this is a real business pain with direct economic consequences. Revenue leakage, renewals, pricing compliance, and post-merger complexity are not nice-to-haves. Pramata sits at the intersection of commercial truth and operational execution, which is exactly where I do my best work.',
+  },
+  {
+    q: 'Why are you a fit for this team?',
+    a: 'My edge is not just selling. It is translating complex product capability into buyer-specific business value, then operationalizing it across GTM. I have led sales and solution engineering, improved win rates with rigor, closed enterprise expansions, and built AI-driven systems that make workflows faster and more reliable.',
+  },
+  {
+    q: 'How would you approach this market?',
+    a: 'I would anchor on concrete economic pain by function, build messaging that crosses Legal to Finance to Sales, sharpen qualification around contract complexity and business impact, and use customer proof around revenue recapture, retention, and selling-time recovery to compress trust cycles.',
+  },
+  {
+    q: 'How do you sell into cross-functional enterprise deals?',
+    a: 'Start with the pain owner, map adjacent stakeholders fast, quantify the economic cost of the current state, surface the operational blockers, and create a shared business case that each function can defend internally. Then control the process hard.',
+  },
+];
+
+const questionsToAsk = [
+  'How has Pramata’s messaging shifted from CLM or repository language toward contract intelligence for the agentic enterprise, and what is landing most with buyers right now?',
+  'In your best deals, who usually feels the pain first, and who ultimately becomes the economic buyer?',
+  'Where do deals usually stall today, category education, stakeholder alignment, implementation anxiety, or proving measurable ROI?',
+  'What separates your highest-performing reps or leaders at Pramata from the ones who struggle?',
+  'If I joined and we looked back in 6 months, what specific outcomes would make you say this was a strong hire?',
+];
+
+const prepPlan = [
+  'Tonight: read this page end to end once, then tighten your 90-second Why Pramata answer and one cross-functional enterprise win story.',
+  'Tomorrow morning: rehearse 3 stories, one enterprise expansion, one process transformation, one AI workflow / systems-building example.',
+  'Tomorrow afternoon: do a 20-minute mock focused on CRO-level questions, category credibility, and objection handling.',
+  'Thursday morning: review the red flags, your questions for Justin, and the closing statement you want to leave him with.',
+  'Right before the call: skim only the cheat sheet section, not the whole site. Show up sharp, not overloaded.',
+];
+
+const redFlags = [
+  'Do not pitch yourself as a generic sales leader. Justin has likely seen plenty of those.',
+  'Do not over-index on AI buzzwords without tying them to contract data, workflow, and measurable business outcomes.',
+  'Do not make this sound like a legal-only category. The money case is broader than Legal.',
+  'Do not ramble on your background. Keep the narrative tight and commercial.',
+  'Do not leave without asking how he defines success for the role and what the real bottlenecks are today.',
+];
+
+export default function PramataJustinInterviewPrepPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:px-10 lg:px-12">
+        <div className="mb-10 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/40 p-8 shadow-2xl shadow-cyan-950/20">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Interview prep</p>
+          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Pramata x Justin Schweisberger</h1>
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
+            Thursday, April 2 at 3:00 PM ET. This conversation is about proving you can help sell a real economic pain,
+            across messy enterprise stakeholder groups, with the product depth and GTM discipline Justin is likely to respect.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
+            <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">CRO conversation</span>
+            <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">Enterprise contract intelligence</span>
+            <span className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2">Cross-functional ROI story</span>
+          </div>
+        </div>
+
+        <section className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">The money thesis</h2>
+            <p className="mt-3 text-slate-300">
+              Pramata is compelling because it ties contract mess directly to revenue leakage, renewal risk, pricing errors,
+              and slow selling. That is real budget territory. If you can show Justin you understand how to turn that pain
+              into repeatable enterprise wins, you are in the right lane.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-amber-500/20 bg-amber-950/20 p-6">
+            <h2 className="text-2xl font-semibold text-white">Your positioning in one line</h2>
+            <p className="mt-3 text-slate-200">
+              Product-minded enterprise revenue leader who can sell complex transformation, align cross-functional buyers,
+              and turn AI and data capability into measurable commercial outcomes.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="mb-4 text-2xl font-semibold text-white">Company signals to know cold</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {companySignals.map((signal) => (
+              <div key={signal.title} className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+                <h3 className="text-lg font-semibold text-cyan-300">{signal.title}</h3>
+                <p className="mt-2 leading-7 text-slate-300">{signal.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">Justin readout</h2>
+            <ul className="mt-4 space-y-3 text-slate-300">
+              {justinSignals.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">Angles that should land</h2>
+            <ul className="mt-4 space-y-3 text-slate-300">
+              {yourAngles.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Likely questions and strong answer direction</h2>
+          <div className="mt-4 space-y-5">
+            {likelyQuestions.map((item) => (
+              <div key={item.q} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="text-lg font-semibold text-cyan-300">{item.q}</h3>
+                <p className="mt-2 leading-7 text-slate-300">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">Questions to ask Justin</h2>
+            <ol className="mt-4 space-y-3 text-slate-300">
+              {questionsToAsk.map((item, index) => (
+                <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
+              ))}
+            </ol>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">Prep plan</h2>
+            <ol className="mt-4 space-y-3 text-slate-300">
+              {prepPlan.map((item, index) => (
+                <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-emerald-300">{index + 1}.</span><span>{item}</span></li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-rose-500/20 bg-rose-950/20 p-6">
+            <h2 className="text-2xl font-semibold text-white">Red flags to avoid</h2>
+            <ul className="mt-4 space-y-3 text-slate-200">
+              {redFlags.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-rose-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-semibold text-white">30-second close</h2>
+            <p className="mt-4 leading-7 text-slate-300">
+              What stands out to me about Pramata is that this is not abstract AI theater. You are solving a painful,
+              economically important enterprise problem where product depth, stakeholder alignment, and GTM rigor all matter.
+              That intersection is where I have done my best work, and it is why this conversation is interesting to me.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Cheat sheet</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
+              <p className="text-sm uppercase tracking-widest text-slate-500">Lead with</p>
+              <p className="mt-2 text-slate-300">Cross-functional enterprise ROI, not generic quota talk.</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
+              <p className="text-sm uppercase tracking-widest text-slate-500">Prove</p>
+              <p className="mt-2 text-slate-300">You can connect product truth to GTM execution and customer outcomes.</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-950 p-4">
+              <p className="text-sm uppercase tracking-widest text-slate-500">Finish with</p>
+              <p className="mt-2 text-slate-300">Curiosity about the real bottlenecks, success metrics, and buying motion.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
