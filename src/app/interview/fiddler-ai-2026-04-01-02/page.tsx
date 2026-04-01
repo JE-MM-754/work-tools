@@ -77,6 +77,51 @@ const strongestStories = [
   },
 ];
 
+const interviewerPlans = [
+  {
+    id: 'fahad',
+    name: 'Fahad',
+    title: 'President',
+    focus: 'Executive lens, category timing, market opportunity, why Fiddler matters now.',
+    approach: [
+      'Lead with market timing, not product minutiae.',
+      'Explain why AI agents are stuck between prototype and production, and why observability and governance become urgent in the next 12 to 24 months.',
+      'Show that you can help customers connect technical trust to executive urgency and budget.',
+      'Sound commercially sharp and category-aware, not like a generic seller or an AI tourist.',
+    ],
+    keyLine: 'You need someone who can turn technical proof into buyer conviction.',
+    bestQuestion: 'Where do you think the market is right now, still education-heavy, or have buyers started actively budgeting for observability, guardrails, and governance?',
+  },
+  {
+    id: 'nick',
+    name: 'Nick',
+    title: 'SE Hiring Manager',
+    focus: 'How you think as an SE, how you run discovery, demo judgment, collaboration, and startup readiness.',
+    approach: [
+      'Lead as an SE first, not as a sales leader trying to fit into an SE box.',
+      'Talk about discovery, qualification, MEDDPICC, demos, POVs, and customer clarity.',
+      'Use your strongest stories to show how technical work improved win rates and deal quality.',
+      'Show that you work well with AEs and know how to use demos to create qualification signal, not just excitement.',
+    ],
+    keyLine: 'A great SE makes complex buying decisions feel clear.',
+    bestQuestion: 'What usually makes a strong SE at Fiddler stand out quickly?',
+  },
+  {
+    id: 'alex',
+    name: 'Alex',
+    title: 'Executive Interview',
+    focus: 'Field fit, team fit, execution quality, and how your technical-commercial profile helps the broader motion.',
+    approach: [
+      'Stay balanced between technical credibility and commercial practicality.',
+      'Talk about how you help AEs move deals forward and make demos sharper, tighter, and more relevant.',
+      'Emphasize that you understand how customer pain, proof, and qualification all tie together.',
+      'Do not over-index on theory, show that you create deal momentum and stronger field execution.',
+    ],
+    keyLine: 'The best AE-SE partnership is tight on discovery, honest on qualification, and aligned on what the buyer needs to believe.',
+    bestQuestion: 'What traits do your best customer-facing people share today?',
+  },
+];
+
 const likelyQuestions = [
   'How technical are you really?',
   'Why move into an SE-centric role now?',
@@ -146,6 +191,21 @@ export default function FiddlerInterviewPrepPage() {
           <p className="mt-4 leading-7 text-slate-200">{openingPositioning}</p>
         </section>
 
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Click into each interview</h2>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {interviewerPlans.map((person) => (
+              <a
+                key={person.id}
+                href={`#${person.id}`}
+                className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-500/20"
+              >
+                {person.name} · {person.title}
+              </a>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-10 rounded-2xl border border-violet-500/20 bg-violet-950/20 p-6">
           <h2 className="text-2xl font-semibold text-white">Why Fiddler</h2>
           <div className="mt-4 space-y-4">
@@ -153,6 +213,40 @@ export default function FiddlerInterviewPrepPage() {
               <p key={item} className="leading-7 text-slate-200">{item}</p>
             ))}
           </div>
+        </section>
+
+        <section className="mt-10 space-y-6">
+          {interviewerPlans.map((person) => (
+            <section
+              key={person.id}
+              id={person.id}
+              className="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900 p-6"
+            >
+              <h2 className="text-2xl font-semibold text-white">How to approach {person.name}</h2>
+              <p className="mt-2 text-sm uppercase tracking-widest text-slate-500">{person.title}</p>
+              <p className="mt-4 leading-7 text-slate-300"><span className="font-semibold text-cyan-300">Focus:</span> {person.focus}</p>
+              <div className="mt-5 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+                <div>
+                  <h3 className="text-lg font-semibold text-cyan-300">Approach</h3>
+                  <ol className="mt-3 space-y-3 text-slate-300">
+                    {person.approach.map((item, index) => (
+                      <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
+                    ))}
+                  </ol>
+                </div>
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                    <h3 className="text-lg font-semibold text-cyan-300">Key line</h3>
+                    <p className="mt-2 leading-7 text-slate-200">{person.keyLine}</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                    <h3 className="text-lg font-semibold text-cyan-300">Best question to ask</h3>
+                    <p className="mt-2 leading-7 text-slate-200">{person.bestQuestion}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          ))}
         </section>
 
         <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
