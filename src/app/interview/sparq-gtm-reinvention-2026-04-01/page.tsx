@@ -20,22 +20,22 @@ const thesisBlocks = {
   close: 'The biggest AI shift over the next 12 to 24 months will be a shift in management thinking, from adding headcount to building smarter operating systems. The companies that win will move their KPIs faster because their workflows are designed better. Sparq can lead that conversation.',
 };
 
-const oldVsNew = [
+const operatingPrinciples = [
   {
-    title: 'Old way: Find the next hire',
-    body: 'When growth stalled or demand increased, leaders usually asked who they needed to hire next to create the most leverage. More capacity meant more people layered into the system.',
+    title: 'Start with KPIs, not org charts',
+    body: 'The first question should be which KPIs matter most, not which team needs another headcount line. That forces the conversation toward leverage, not staffing reflexes.',
   },
   {
-    title: 'New way: Find the next workflow',
-    body: 'The better question is which workflow moves the KPI, which specific actions inside it can be improved with AI, and which workflow should be built next to create the most leverage.',
+    title: 'Go one level deeper than the workflow name',
+    body: 'Once a high-value workflow is identified, the real leverage comes from finding the specific actions, signals, decisions, and exception paths inside it that AI can improve.',
   },
   {
-    title: 'Old way: Scale through human bandwidth',
-    body: 'Output was constrained by how much work people could manually process, coordinate, route, review, and follow up on across the business.',
+    title: 'Use AI where it is structurally stronger',
+    body: 'AI is especially valuable when it can detect patterns, surface signals, route work, identify anomalies, and recommend next-best actions across fragmented systems faster than humans can.',
   },
   {
-    title: 'New way: Scale through smarter operating systems',
-    body: 'Output grows when AI handles the right actions, detects the right signals and patterns, and gives each strong operator better systems to direct and improve.',
+    title: 'Leverage people through better systems',
+    body: 'The goal is not automation for its own sake. It is to give strong people better systems so they can manage more surface area, make better decisions, and move KPIs faster.',
   },
 ];
 
@@ -103,9 +103,9 @@ export default function SparqGtmReinventionPage() {
         </section>
 
         <section className="mt-10 rounded-[1.75rem] border border-stone-200 bg-white/85 p-8 shadow-[0_12px_40px_rgba(120,53,15,0.05)]">
-          <SectionHeader title="Old way versus new way" />
+          <SectionHeader title="What changes once you adopt the new lens" />
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {oldVsNew.map((item) => (
+            {operatingPrinciples.map((item) => (
               <div key={item.title} className="rounded-2xl border border-stone-200 bg-[#fffdf9] p-5">
                 <h3 className="text-lg font-semibold text-stone-900">{item.title}</h3>
                 <p className="mt-3 text-base leading-8 text-stone-700">{item.body}</p>
