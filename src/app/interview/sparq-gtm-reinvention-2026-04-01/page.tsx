@@ -11,13 +11,13 @@ const thesisBlocks = {
   rationale: 'That made sense when work was manual, fragmented, and constrained by human bandwidth.',
   transition: 'Now the better question is:',
   bullets: [
-    'which workflows drive our key KPIs',
+    'which workflows drive the business outcomes that matter most',
     'which actions inside them can be automated or improved with AI',
     'where AI can detect signals and patterns better than humans',
     'which workflows we should build next to create the most leverage',
   ],
   goal: 'The point is not automation for its own sake. It is to give strong people better systems so they can produce much more output with better control.',
-  close: 'The biggest AI shift over the next 12 to 24 months will be a shift in management thinking, from adding headcount to building smarter operating systems. The companies that win will move their KPIs faster because their workflows are designed better. Sparq can lead that conversation.',
+  close: 'The biggest AI shift over the next 12 to 24 months will be a shift in management thinking, from adding headcount to building smarter operating systems. The companies that win will improve the business outcomes that matter most because their workflows are designed better. Sparq can lead that conversation.',
 };
 
 const operatingPrinciples = [
@@ -40,18 +40,18 @@ const operatingPrinciples = [
 ];
 
 const sparqPositioning = [
-  'Sparq helps customers find the workflows most tied to KPI movement, then identify the specific actions, signals, and decisions inside them where AI creates the most leverage.',
+  'Sparq helps customers find the workflows most tied to the business outcomes that matter most, then identify the specific actions, signals, and decisions inside them where AI creates the most leverage.',
   'That gives Sparq a stronger story than generic AI services. It is not helping clients experiment. It is helping them build smarter operating systems.',
   'Sparq can help determine what AI should detect, what it should automate, what should remain human, and what workflow should be prioritized next.',
-  'The result is simple: better systems, more output per strong operator, and faster movement of the KPIs that matter most.',
+  'The result is simple: better systems, more output per strong operator, and faster improvement in the business outcomes that matter most.',
 ];
 
 const questions = [
-  'Which workflows drive the most important KPIs in the business today?',
+  'Which business outcomes matter most right now, lead generation growth, conversion rate, CSAT improvement, service response time, margin, retention, or something else, and which workflows drive them?',
   'What specific granular actions inside those workflows can be automated or improved with AI?',
   'What signals, patterns, anomalies, or next-best actions can AI detect better or faster than humans?',
   'Which workflows should be built next to create the highest leverage for the business and the people running it?',
-  'How should success be measured so the conversation stays tied to KPI movement and better business outcomes, not generic AI efficiency claims?',
+  'How should success be measured so the conversation stays tied to better business outcomes, not generic AI efficiency claims?',
 ];
 
 function SectionHeader({ title }: { title: string }) {
