@@ -55,7 +55,7 @@ const demoFramework = [
   'Shape the story around the customer’s exact world instead of giving a feature tour.',
   'Pause often and get the customer talking more than you are talking.',
   'Use silence well so the AE can probe and gather more qualification signal.',
-  'Leave the customer feeling understood and helped, and leave the AE with better deal clarity.',
+  'Leave the customer feeling understood and helped, and the AE with better deal clarity.',
 ];
 
 const strongestStories = [
@@ -83,11 +83,43 @@ const interviewerPlans = [
     name: 'Fahad',
     title: 'President',
     focus: 'Executive lens, category timing, market opportunity, why Fiddler matters now.',
+    goal: 'Make Fahad believe you understand the market window, can speak credibly with enterprise buyers, and can help Fiddler turn a technical category into commercial urgency.',
+    tone: 'Executive, sharp, calm, and category-aware. Less demo talk, more market and buyer judgment.',
+    whatHeCaresAbout: [
+      'Why this market matters now, not eventually.',
+      'Whether Fiddler is selling into a real budget line or still a science project.',
+      'Whether you can help enterprise buyers connect technical trust to business risk and ROI.',
+      'Whether you understand how a young category gets won in the field.',
+    ],
+    openingMove: 'Lead with the market point of view. AI agents are still stuck between prototype and production, and the next 12 to 24 months are the market window to help enterprises move safely into production.',
     approach: [
-      'Lead with market timing, not product minutiae.',
-      'Explain why AI agents are stuck between prototype and production, and why observability and governance become urgent in the next 12 to 24 months.',
-      'Show that you can help customers connect technical trust to executive urgency and budget.',
-      'Sound commercially sharp and category-aware, not like a generic seller or an AI tourist.',
+      'Start at the market level, not with your resume bullets.',
+      'Frame Fiddler as a company helping enterprises move from AI experimentation to trusted deployment.',
+      'Talk about observability, governance, and control as buying criteria, not just technical nice-to-haves.',
+      'Show that you understand enterprise buyers need trust, accountability, and explainable intervention before broad rollout.',
+      'Use one or two strong stories to prove you know how to support complex AI sales and executive conversations.',
+    ],
+    strongestStories: [
+      'Top-five global bank approval story for technical trust and risk handling.',
+      '$1.5M F50 expansion story for executive business case and multi-stakeholder deal judgment.',
+    ],
+    likelyQuestions: [
+      'Why Fiddler now?',
+      'Why this category?',
+      'How would you position Fiddler against a noisy AI tooling market?',
+      'What makes you effective in technical enterprise sales?',
+      'How do you think about moving new categories into budgeted projects?',
+    ],
+    greatAnswerShape: [
+      'Start with market timing.',
+      'Tie to enterprise pain and budget reality.',
+      'Show your technical-commercial edge.',
+      'End with why that matters specifically for Fiddler now.',
+    ],
+    risks: [
+      'Sounding too generic on AI.',
+      'Talking like a pure seller instead of someone who understands technical trust.',
+      'Getting lost in product details instead of the business case.',
     ],
     keyLine: 'You need someone who can turn technical proof into buyer conviction.',
     bestQuestion: 'Where do you think the market is right now, still education-heavy, or have buyers started actively budgeting for observability, guardrails, and governance?',
@@ -97,11 +129,46 @@ const interviewerPlans = [
     name: 'Nick',
     title: 'SE Hiring Manager',
     focus: 'How you think as an SE, how you run discovery, demo judgment, collaboration, and startup readiness.',
+    goal: 'Make Nick believe you are a real SE operator who understands discovery, demos, qualification, and how to work tightly with AEs and technical buyers.',
+    tone: 'Practical, detailed, thoughtful, and collaborative. Less executive theory, more how you actually work.',
+    whatHeCaresAbout: [
+      'How you run discovery.',
+      'How you shape demos and POVs.',
+      'Whether you understand qualification and MEDDPICC in a technical sales motion.',
+      'Whether you are startup-ready, coachable, and strong cross-functionally.',
+    ],
+    openingMove: 'Lead as a strong SE with commercial range, not as a sales leader taking a detour. Make the whole conversation about customer clarity, technical credibility, and deal movement.',
     approach: [
-      'Lead as an SE first, not as a sales leader trying to fit into an SE box.',
-      'Talk about discovery, qualification, MEDDPICC, demos, POVs, and customer clarity.',
-      'Use your strongest stories to show how technical work improved win rates and deal quality.',
-      'Show that you work well with AEs and know how to use demos to create qualification signal, not just excitement.',
+      'Talk about discovery as the thing that earns the right to demo.',
+      'Explain how a great SE uncovers decision criteria, pain, and evaluation process early.',
+      'Talk about demos as tailored story-shaping, not feature tours.',
+      'Show that you understand how to help the AE leave with more qualification signal, not just a happy customer.',
+      'Use real stories where technical-sales process improvement changed outcomes.',
+    ],
+    strongestStories: [
+      'Win-rate improvement from 16% to 43% via stronger qualification and POCs.',
+      'Top-five banks story for technical trust and enterprise scrutiny.',
+      'AI workflow leverage story to show you understand AI systems and process leverage.',
+    ],
+    likelyQuestions: [
+      'How technical are you really?',
+      'What makes a great SE?',
+      'What makes a great demo?',
+      'How do you work with AEs?',
+      'How do you run discovery?',
+      'How do you handle a customer who wants to jump straight into a demo?',
+      'What does good qualification look like in a technical sale?',
+    ],
+    greatAnswerShape: [
+      'Start with the customer problem.',
+      'Explain your process clearly.',
+      'Tie it to qualification and deal progression.',
+      'Show you know how to balance technical depth with commercial value.',
+    ],
+    risks: [
+      'Sounding like a VP trying to force relevance.',
+      'Being too abstract and not concrete enough on your SE craft.',
+      'Sounding like demos are performance instead of discovery tools.',
     ],
     keyLine: 'A great SE makes complex buying decisions feel clear.',
     bestQuestion: 'What usually makes a strong SE at Fiddler stand out quickly?',
@@ -111,11 +178,44 @@ const interviewerPlans = [
     name: 'Alex',
     title: 'Executive Interview',
     focus: 'Field fit, team fit, execution quality, and how your technical-commercial profile helps the broader motion.',
+    goal: 'Make Alex believe you will help the field get more signal, more clarity, and more technical-commercial leverage in hard deals.',
+    tone: 'Balanced, commercially sharp, and grounded in field execution. Somewhere between Fahad and Nick.',
+    whatHeCaresAbout: [
+      'How you improve field execution.',
+      'How you work with AEs and the broader go-to-market motion.',
+      'Whether your profile helps the team win better, faster, and more consistently.',
+      'Whether you understand the difference between activity and real qualification.',
+    ],
+    openingMove: 'Position yourself as someone who helps customer-facing teams make better decisions in complex deals by combining technical credibility, qualification discipline, and better proof.',
     approach: [
-      'Stay balanced between technical credibility and commercial practicality.',
-      'Talk about how you help AEs move deals forward and make demos sharper, tighter, and more relevant.',
-      'Emphasize that you understand how customer pain, proof, and qualification all tie together.',
-      'Do not over-index on theory, show that you create deal momentum and stronger field execution.',
+      'Emphasize the AE-SE partnership and how you create leverage for the field.',
+      'Talk about qualification signal, not just technical explanation.',
+      'Use the demo framework to show how you help the customer and the AE at the same time.',
+      'Speak to consistency, process, and repeatability, not just one-off heroics.',
+      'Show that your technical-commercial range helps move hard deals forward with more confidence.',
+    ],
+    strongestStories: [
+      'Win-rate improvement story for field leverage.',
+      '$1.5M F50 expansion for complex deal support and executive alignment.',
+      'Partner-led product and services motions for cross-functional selling and expansion.',
+    ],
+    likelyQuestions: [
+      'How do you think about AE-SE partnership?',
+      'How do you help move deals forward?',
+      'What does good qualification look like to you?',
+      'What would you bring to this team quickly?',
+      'How do you balance technical detail with business clarity?',
+    ],
+    greatAnswerShape: [
+      'Start with customer and field clarity.',
+      'Show how you create signal for the AE and confidence for the buyer.',
+      'Tie back to process, discipline, and repeatability.',
+      'Land on how that helps the broader motion scale.',
+    ],
+    risks: [
+      'Talking too much like Fahad and not enough like a field operator.',
+      'Over-indexing on market theory instead of execution.',
+      'Missing the partnership and qualification angle.',
     ],
     keyLine: 'The best AE-SE partnership is tight on discovery, honest on qualification, and aligned on what the buyer needs to believe.',
     bestQuestion: 'What traits do your best customer-facing people share today?',
@@ -222,28 +322,87 @@ export default function FiddlerInterviewPrepPage() {
               id={person.id}
               className="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900 p-6"
             >
-              <h2 className="text-2xl font-semibold text-white">How to approach {person.name}</h2>
+              <h2 className="text-2xl font-semibold text-white">Full call plan, {person.name}</h2>
               <p className="mt-2 text-sm uppercase tracking-widest text-slate-500">{person.title}</p>
-              <p className="mt-4 leading-7 text-slate-300"><span className="font-semibold text-cyan-300">Focus:</span> {person.focus}</p>
-              <div className="mt-5 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">Main goal</h3>
+                  <p className="mt-2 leading-7 text-slate-200">{person.goal}</p>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">Tone</h3>
+                  <p className="mt-2 leading-7 text-slate-200">{person.tone}</p>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">Opening move</h3>
+                  <p className="mt-2 leading-7 text-slate-200">{person.openingMove}</p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
                 <div>
-                  <h3 className="text-lg font-semibold text-cyan-300">Approach</h3>
+                  <h3 className="text-lg font-semibold text-cyan-300">What this person likely cares about</h3>
+                  <ul className="mt-3 space-y-3 text-slate-300">
+                    {person.whatHeCaresAbout.map((item) => (
+                      <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-cyan-300">How to approach the conversation</h3>
                   <ol className="mt-3 space-y-3 text-slate-300">
                     {person.approach.map((item, index) => (
                       <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
                     ))}
                   </ol>
                 </div>
-                <div className="space-y-4">
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-                    <h3 className="text-lg font-semibold text-cyan-300">Key line</h3>
-                    <p className="mt-2 leading-7 text-slate-200">{person.keyLine}</p>
-                  </div>
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-                    <h3 className="text-lg font-semibold text-cyan-300">Best question to ask</h3>
-                    <p className="mt-2 leading-7 text-slate-200">{person.bestQuestion}</p>
-                  </div>
+              </div>
+
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-cyan-300">Best stories to use</h3>
+                  <ul className="mt-3 space-y-3 text-slate-300">
+                    {person.strongestStories.map((item) => (
+                      <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                    ))}
+                  </ul>
                 </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-cyan-300">Likely questions</h3>
+                  <ul className="mt-3 space-y-3 text-slate-300">
+                    {person.likelyQuestions.map((item) => (
+                      <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_1fr_1fr]">
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">How to structure your answers</h3>
+                  <ol className="mt-3 space-y-3 text-slate-300">
+                    {person.greatAnswerShape.map((item, index) => (
+                      <li key={item} className="flex gap-3"><span className="mt-0.5 font-semibold text-cyan-300">{index + 1}.</span><span>{item}</span></li>
+                    ))}
+                  </ol>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">Key line</h3>
+                  <p className="mt-2 leading-7 text-slate-200">{person.keyLine}</p>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                  <h3 className="text-lg font-semibold text-cyan-300">Best question to ask</h3>
+                  <p className="mt-2 leading-7 text-slate-200">{person.bestQuestion}</p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-rose-500/20 bg-rose-950/20 p-5">
+                <h3 className="text-lg font-semibold text-white">Biggest risks to avoid with {person.name}</h3>
+                <ul className="mt-3 space-y-3 text-slate-200">
+                  {person.risks.map((item) => (
+                    <li key={item} className="flex gap-3"><span className="mt-1 text-rose-300">•</span><span>{item}</span></li>
+                  ))}
+                </ul>
               </div>
             </section>
           ))}
@@ -271,7 +430,7 @@ export default function FiddlerInterviewPrepPage() {
             </ol>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-            <h2 className="text-2xl font-semibold text-white">Likely questions today</h2>
+            <h2 className="text-2xl font-semibold text-white">Likely questions across the sequence</h2>
             <ul className="mt-4 space-y-3 text-slate-300">
               {likelyQuestions.map((item) => (
                 <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
