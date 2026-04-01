@@ -49,6 +49,7 @@ const sparqPositioning = [
 const questions = [
   'Which business outcomes matter most right now, and which workflows drive them?',
   'How can Sparq create a repeatable GTM playbook to workshop the highest-leverage workflows with customers quickly, estimate ROI, implement fast, and do it in a trusted way?',
+  'Which workflows could Sparq productize into repeatable agentic solutions that can be deployed quickly for other customers with only minor tuning and tweaks?',
   'How should success be measured so the conversation stays tied to better business outcomes, not generic AI efficiency claims?',
   'Once those outcomes are tracked, how can Sparq price against them in a way that aligns with customer success?',
 ];
