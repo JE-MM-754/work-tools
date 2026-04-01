@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const thesisBlocks = {
   kicker: 'Old way: add headcount. New way: build better workflows.',
-  intro: 'For years, leaders scaled by asking: who is the next hire that gives us the most leverage?',
+  intro: 'For years, leaders scaled by asking: who is the next hire (or services project) that gives us the most leverage?',
   rationale: 'That made sense when work was manual, fragmented, and constrained by human bandwidth.',
   transition: 'Now the better question is:',
   bullets: [
