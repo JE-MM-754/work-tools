@@ -142,6 +142,62 @@ export default function SparqGtmReinventionPage() {
             ))}
           </div>
         </section>
+
+        <section className="mt-10 rounded-[1.75rem] border border-stone-200 bg-white/85 p-8 shadow-[0_12px_40px_rgba(120,53,15,0.05)]">
+          <SectionHeader title="Example: old way versus new way" />
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[1.5rem] border border-stone-200 bg-[#fffdf9] p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-700">Old way</p>
+              <h3 className="mt-2 text-2xl font-semibold text-stone-900">Hire another marketer</h3>
+              <p className="mt-3 text-base leading-8 text-stone-700">
+                When lead generation slows down, the instinct is to add another person to the team and ask them to do more of the work manually.
+              </p>
+              <div className="mt-5 space-y-3">
+                {[
+                  'Research target accounts and segments',
+                  'Draft campaign copy and content briefs',
+                  'Build email sequences and launch campaigns',
+                  'Pull channel performance reports',
+                  'Review conversion data and identify drop-offs',
+                  'Coordinate with sales on follow-up and next steps',
+                ].map((item) => (
+                  <div key={item} className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm leading-7 text-stone-700">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 rounded-xl border border-orange-100 bg-orange-50 px-4 py-4 text-sm leading-7 text-stone-700">
+                Result: more human bandwidth, but the workflow is still fragmented, manual, and hard to scale.
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-orange-200 bg-[#fff7ef] p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-700">New way</p>
+              <h3 className="mt-2 text-2xl font-semibold text-stone-900">Build the marketing workflow</h3>
+              <p className="mt-3 text-base leading-8 text-stone-700">
+                Instead of only adding headcount, redesign the workflow so AI agents handle repetitive work, surface signals, and help one strong marketer direct a much more powerful system.
+              </p>
+              <div className="mt-5 grid gap-3">
+                {[
+                  ['AI research agent', 'Finds high-fit accounts, segments, and intent signals automatically'],
+                  ['AI content agent', 'Drafts campaign copy, briefs, hooks, and variants from the ICP and offer'],
+                  ['AI campaign ops agent', 'Builds sequences, launches tests, and monitors early performance'],
+                  ['AI analytics agent', 'Tracks conversion data, flags anomalies, and spots drop-off points quickly'],
+                  ['AI routing agent', 'Sends the highest-signal leads and recommendations to sales automatically'],
+                  ['Human marketer', 'Owns strategy, approves direction, tunes the system, and decides the next workflow to build'],
+                ].map(([title, body]) => (
+                  <div key={title} className="rounded-xl border border-orange-100 bg-white/90 px-4 py-3">
+                    <p className="text-sm font-semibold text-stone-900">{title}</p>
+                    <p className="mt-1 text-sm leading-7 text-stone-700">{body}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 rounded-xl border border-orange-200 bg-white px-4 py-4 text-sm leading-7 text-stone-700">
+                Result: more output, faster learning, better lead generation performance, and a system Sparq can optimize, govern, and expand into the next highest-leverage workflow.
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
