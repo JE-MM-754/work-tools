@@ -48,9 +48,7 @@ const sparqPositioning = [
 
 const questions = [
   'Which business outcomes matter most right now, and which workflows drive them?',
-  'What specific granular actions inside those workflows can be automated or improved with AI?',
   'How can Sparq create a repeatable GTM playbook to workshop the highest-leverage workflows with customers quickly, estimate ROI, implement fast, and do it in a trusted way?',
-  'What signals, patterns, anomalies, or next-best actions can AI detect better or faster than humans?',
   'How should success be measured so the conversation stays tied to better business outcomes, not generic AI efficiency claims?',
   'Once those outcomes are tracked, how can Sparq price against them in a way that aligns with customer success?',
 ];
