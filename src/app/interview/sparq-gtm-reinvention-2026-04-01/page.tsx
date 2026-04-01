@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'Sparq Thesis',
@@ -56,6 +57,28 @@ const questions = [
 
 function SectionHeader({ title }: { title: string }) {
   return <h2 className="text-2xl font-semibold tracking-tight text-stone-900 md:text-3xl">{title}</h2>;
+}
+
+function DiagramNode({ icon, title, body, tone = 'stone' }: { icon: ReactNode; title: string; body: string; tone?: 'stone' | 'orange' | 'emerald' }) {
+  const toneClasses = {
+    stone: 'border-stone-200 bg-white text-stone-700',
+    orange: 'border-orange-200 bg-orange-50 text-stone-700',
+    emerald: 'border-emerald-200 bg-emerald-50 text-stone-700',
+  };
+
+  return (
+    <div className={`rounded-2xl border px-4 py-4 ${toneClasses[tone]}`}>
+      <div className="flex items-start gap-3">
+        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-xl shadow-sm">
+          {icon}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-stone-900">{title}</p>
+          <p className="mt-1 text-sm leading-7">{body}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function SparqGtmReinventionPage() {
@@ -150,50 +173,57 @@ export default function SparqGtmReinventionPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-700">Old way</p>
               <h3 className="mt-2 text-2xl font-semibold text-stone-900">Hire another marketer</h3>
               <p className="mt-3 text-base leading-8 text-stone-700">
-                When lead generation slows down, the instinct is to add another person to the team and ask them to do more of the work manually.
+                When lead generation slows down, the instinct is to add another person and have them manually carry more of the workflow.
               </p>
               <div className="mt-5 space-y-3">
-                {[
-                  'Research target accounts and segments',
-                  'Draft campaign copy and content briefs',
-                  'Build email sequences and launch campaigns',
-                  'Pull channel performance reports',
-                  'Review conversion data and identify drop-offs',
-                  'Coordinate with sales on follow-up and next steps',
-                ].map((item) => (
-                  <div key={item} className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm leading-7 text-stone-700">
-                    {item}
-                  </div>
-                ))}
+                <DiagramNode icon="🔎" title="Research" body="Find target accounts, segments, and campaign angles manually." />
+                <DiagramNode icon="✍️" title="Content" body="Draft campaign copy, briefs, and variants by hand." />
+                <DiagramNode icon="📣" title="Campaign ops" body="Build sequences, launch campaigns, and monitor performance manually." />
+                <DiagramNode icon="📊" title="Reporting" body="Pull reports, inspect conversions, and hunt for drop-offs." />
+                <DiagramNode icon="🤝" title="Sales handoff" body="Coordinate manually with sales on follow-up and next steps." />
               </div>
               <div className="mt-5 rounded-xl border border-orange-100 bg-orange-50 px-4 py-4 text-sm leading-7 text-stone-700">
-                Result: more human bandwidth, but the workflow is still fragmented, manual, and hard to scale.
+                <strong className="text-stone-900">Result:</strong> more human bandwidth, but the workflow stays fragmented, manual, and hard to scale.
               </div>
             </div>
 
             <div className="rounded-[1.5rem] border border-orange-200 bg-[#fff7ef] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-700">New way</p>
-              <h3 className="mt-2 text-2xl font-semibold text-stone-900">Build the marketing workflow</h3>
+              <h3 className="mt-2 text-2xl font-semibold text-stone-900">Build the workflow</h3>
               <p className="mt-3 text-base leading-8 text-stone-700">
                 Instead of only adding headcount, redesign the workflow so AI agents handle repetitive work, surface signals, and help one strong marketer direct a much more powerful system.
               </p>
-              <div className="mt-5 grid gap-3">
-                {[
-                  ['AI research agent', 'Finds high-fit accounts, segments, and intent signals automatically'],
-                  ['AI content agent', 'Drafts campaign copy, briefs, hooks, and variants from the ICP and offer'],
-                  ['AI campaign ops agent', 'Builds sequences, launches tests, and monitors early performance'],
-                  ['AI analytics agent', 'Tracks conversion data, flags anomalies, and spots drop-off points quickly'],
-                  ['AI routing agent', 'Sends the highest-signal leads and recommendations to sales automatically'],
-                  ['Human marketer', 'Owns strategy, approves direction, tunes the system, and decides the next workflow to build'],
-                ].map(([title, body]) => (
-                  <div key={title} className="rounded-xl border border-orange-100 bg-white/90 px-4 py-3">
-                    <p className="text-sm font-semibold text-stone-900">{title}</p>
-                    <p className="mt-1 text-sm leading-7 text-stone-700">{body}</p>
-                  </div>
-                ))}
+
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                <DiagramNode icon="🤖" title="AI research agent" body="Finds high-fit accounts, segments, and intent signals automatically." tone="orange" />
+                <DiagramNode icon="📝" title="AI content agent" body="Drafts copy, hooks, briefs, and campaign variants from the ICP and offer." tone="orange" />
+                <DiagramNode icon="🚀" title="AI campaign ops agent" body="Builds sequences, launches tests, and monitors early performance." tone="orange" />
+                <DiagramNode icon="📈" title="AI analytics agent" body="Tracks conversions, flags anomalies, and spots drop-off points quickly." tone="orange" />
+                <DiagramNode icon="🧭" title="AI routing agent" body="Sends the highest-signal leads and recommendations to sales automatically." tone="orange" />
+                <DiagramNode icon="🧠" title="Human marketer" body="Owns strategy, approves direction, tunes the system, and decides the next workflow to build." tone="emerald" />
               </div>
+
+              <div className="mt-5 rounded-2xl border border-stone-200 bg-white/80 p-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-700">Sparq control layer</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {['Governance', 'Reliability', 'Model tuning', 'Vendor routing', 'Cost tracking', 'Observability'].map((item) => (
+                    <span key={item} className="rounded-full border border-orange-100 bg-orange-50 px-3 py-2 text-xs font-medium text-stone-700">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               <div className="mt-5 rounded-xl border border-orange-200 bg-white px-4 py-4 text-sm leading-7 text-stone-700">
-                Result: more output, faster learning, better lead generation performance, and a system Sparq can optimize, govern, and expand into the next highest-leverage workflow.
+                <strong className="text-stone-900">Result:</strong> more output, faster learning, better lead generation performance, and a workflow Sparq can optimize, govern, and expand into the next highest-leverage use case.
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {['Faster lead generation', 'Better conversion', 'Less manual work', 'Faster response', 'More leverage per marketer'].map((item) => (
+                  <span key={item} className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-medium text-stone-700">
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
