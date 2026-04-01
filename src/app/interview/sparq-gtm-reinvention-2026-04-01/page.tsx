@@ -5,7 +5,20 @@ export const metadata: Metadata = {
   description: 'A concise strategic thesis for how Sparq can sharpen its GTM around the shift from hiring roles to designing workflows.',
 };
 
-const thesis = `The old way of scaling a company was headcount-first because output was limited by human bandwidth. Leaders were always asking the same question: who is the next hire that gives us the most leverage? That made sense in a world where most workflows were manual, fragmented, and dependent on people to move work across the business. The new way is workflow-first. The better question is which workflows drive the most important KPIs, which specific actions inside those workflows can be automated or improved with AI, what kinds of signal detection and pattern recognition AI can perform better than humans, and which workflows should be built next to create the most leverage. The goal is not automation for its own sake. It is to give strong people better systems so they can generate much more output with better control. The biggest AI shift over the next 12 to 24 months will not just be better models. It will be this change in management thinking, from adding headcount to building smarter operating systems. The companies that win will move their KPIs faster because their workflows are designed better. Sparq has a real opportunity to lead that conversation.`;
+const thesisBlocks = {
+  kicker: 'Old way: add headcount. New way: build better workflows.',
+  intro: 'For years, leaders scaled by asking: who is the next hire that gives us the most leverage?',
+  rationale: 'That made sense when work was manual, fragmented, and constrained by human bandwidth.',
+  transition: 'Now the better question is:',
+  bullets: [
+    'which workflows drive our key KPIs',
+    'which actions inside them can be automated or improved with AI',
+    'where AI can detect signals and patterns better than humans',
+    'which workflows we should build next to create the most leverage',
+  ],
+  goal: 'The point is not automation for its own sake. It is to give strong people better systems so they can produce much more output with better control.',
+  close: 'The biggest AI shift over the next 12 to 24 months will be a shift in management thinking, from adding headcount to building smarter operating systems. The companies that win will move their KPIs faster because their workflows are designed better. Sparq can lead that conversation.',
+};
 
 const oldVsNew = [
   {
@@ -69,10 +82,24 @@ export default function SparqGtmReinventionPage() {
           </h1>
           <div className="mt-6 rounded-[1.5rem] border border-orange-100 bg-white/70 px-6 py-5 shadow-[0_10px_30px_rgba(120,53,15,0.06)]">
             <p className="text-lg font-medium leading-8 text-stone-900 md:text-xl md:leading-9">
-              The operating model of growth is shifting from headcount-first to workflow-first.
+              {thesisBlocks.kicker}
             </p>
           </div>
-          <p className="mt-6 max-w-4xl text-xl leading-9 text-stone-700">{thesis}</p>
+          <div className="mt-6 max-w-4xl space-y-4 text-lg leading-8 text-stone-700 md:text-xl md:leading-9">
+            <p>{thesisBlocks.intro}</p>
+            <p>{thesisBlocks.rationale}</p>
+            <p className="font-medium text-stone-900">{thesisBlocks.transition}</p>
+            <ul className="space-y-3 rounded-[1.25rem] border border-stone-200 bg-white/60 px-6 py-5 text-base leading-8 text-stone-800 md:text-lg">
+              {thesisBlocks.bullets.map((bullet) => (
+                <li key={bullet} className="flex gap-3">
+                  <span className="mt-[13px] h-2 w-2 rounded-full bg-orange-500" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+            <p>{thesisBlocks.goal}</p>
+            <p className="font-medium text-stone-900">{thesisBlocks.close}</p>
+          </div>
         </section>
 
         <section className="mt-10 rounded-[1.75rem] border border-stone-200 bg-white/85 p-8 shadow-[0_12px_40px_rgba(120,53,15,0.05)]">
