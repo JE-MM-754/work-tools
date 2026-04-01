@@ -62,8 +62,13 @@ export default function SparqGtmReinventionPage() {
         <section className="rounded-[2rem] border border-orange-200 bg-[linear-gradient(135deg,#fffaf3,#f3e6d5)] px-8 py-10 shadow-[0_24px_80px_rgba(120,53,15,0.10)] md:px-10 md:py-12">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700">Sparq strategy thesis</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-stone-950 md:text-5xl md:leading-[1.08]">
-            The old way is role-based. The new way is workflow-based.
+            Old way: hire for the role. New way: design for the workflow.
           </h1>
+          <div className="mt-6 rounded-[1.5rem] border border-orange-100 bg-white/70 px-6 py-5 shadow-[0_10px_30px_rgba(120,53,15,0.06)]">
+            <p className="text-lg font-medium leading-8 text-stone-900 md:text-xl md:leading-9">
+              The operating model of growth is shifting from headcount-first to workflow-first.
+            </p>
+          </div>
           <p className="mt-6 max-w-4xl text-xl leading-9 text-stone-700">{thesis}</p>
         </section>
 
