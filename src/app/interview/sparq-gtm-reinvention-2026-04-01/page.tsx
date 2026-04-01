@@ -39,23 +39,11 @@ const operatingPrinciples = [
   },
 ];
 
-const marketChanges = [
-  'Companies will increasingly stop asking how to make each individual role slightly more productive and start asking which workflows most directly move their core KPIs.',
-  'This shifts investment away from shallow role-based assistants and toward workflow systems that improve cycle time, throughput, conversion, quality, margin, service levels, and speed of execution.',
-  'The real AI advantage will come from getting more granular, identifying the specific actions inside a workflow that can be accelerated, automated, or improved with AI.',
-  'Another major advantage will come from signal detection and pattern recognition. AI can surface patterns, anomalies, timing signals, and next-best actions across fragmented systems faster than humans can on their own.',
-  'Once the right workflows are built, the role becomes more leveraged. One strong operator can supervise, direct, and continuously improve AI-powered workflows and generate far more output than the old model allowed.',
-  'That is why some AI-native companies can run surprisingly lean. A useful signal is Anthropic, where public commentary has pointed to an extremely small marketing function relative to the scale of the company. The point is not the exact number. The point is that better workflows create disproportionate output.',
-  'As AI moves into real workflows, governance, security, observability, and human control become more important because the stakes rise when AI is tied to live operations and KPI movement.',
-];
-
 const sparqPositioning = [
-  'Sparq is well positioned because its brand already points toward the hard operational work inside enterprises, not surface-level productivity theater.',
-  'Its wedge is helping customers identify the workflows most tied to growth, margin, throughput, uptime, and risk, then going one level deeper into the specific actions, signals, and decisions inside those workflows.',
-  'That gives Sparq a stronger story than generic AI services. It is not just helping clients experiment with AI. It is helping them build smarter operating systems.',
-  'Sparq can help customers determine what AI should detect, what AI should automate, what should remain human, and what workflow should be prioritized next for the highest leverage.',
-  'The goal is not to replace people. It is to make each strong person far more effective by surrounding them with better workflows, better signals, and better control.',
-  'In plain English, Sparq can help enterprises move from asking what role to hire next to asking what workflow to build next, so the business moves its KPIs faster with better outcomes.',
+  'Sparq helps customers find the workflows most tied to KPI movement, then identify the specific actions, signals, and decisions inside them where AI creates the most leverage.',
+  'That gives Sparq a stronger story than generic AI services. It is not helping clients experiment. It is helping them build smarter operating systems.',
+  'Sparq can help determine what AI should detect, what it should automate, what should remain human, and what workflow should be prioritized next.',
+  'The result is simple: better systems, more output per strong operator, and faster movement of the KPIs that matter most.',
 ];
 
 const questions = [
@@ -115,19 +103,8 @@ export default function SparqGtmReinventionPage() {
         </section>
 
         <section className="mt-10 rounded-[1.75rem] border border-stone-200 bg-white/85 p-8 shadow-[0_12px_40px_rgba(120,53,15,0.05)]">
-          <SectionHeader title="How the market is changing over the next 12 to 24 months" />
-          <div className="mt-6 space-y-4">
-            {marketChanges.map((item) => (
-              <div key={item} className="rounded-2xl border border-stone-200 bg-[#fffdf9] px-5 py-4 text-base leading-8 text-stone-700">
-                {item}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-10 rounded-[1.75rem] border border-stone-200 bg-white/85 p-8 shadow-[0_12px_40px_rgba(120,53,15,0.05)]">
-          <SectionHeader title="How Sparq can help customers get there" />
-          <div className="mt-6 space-y-4">
+          <SectionHeader title="Why Sparq fits this shift" />
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
             {sparqPositioning.map((item) => (
               <div key={item} className="rounded-2xl border border-stone-200 bg-[#fffdf9] px-5 py-4 text-base leading-8 text-stone-700">
                 {item}
@@ -137,16 +114,19 @@ export default function SparqGtmReinventionPage() {
         </section>
 
         <section className="mt-10 rounded-[1.75rem] border border-orange-200 bg-[#fff7ef] p-8 shadow-[0_12px_40px_rgba(249,115,22,0.08)]">
-          <SectionHeader title="What happens to the role after the workflow is built" />
+          <SectionHeader title="What happens for Sparq after the first workflow lands" />
           <div className="mt-6 space-y-4">
             <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
-              The role becomes more leveraged, not less important. Once the workflow exists, the person in that role can direct, supervise, refine, and improve AI-powered execution instead of manually carrying every step themselves.
+              Sparq gets entrenched in the account quickly because it is tied to an important workflow and an immediate business outcome. That creates trust fast.
             </div>
             <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
-              That means one strong operator can often produce much more output, manage more surface area, and make better decisions because the surrounding system is doing more of the repetitive, fragmented, and low-leverage work.
+              From there, Sparq can track ongoing outcomes, help price toward success, and identify the next highest-leverage workflows to build so the value compounds over time.
             </div>
             <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
-              A useful signal is Anthropic, where public commentary has pointed to an extremely lean marketing function relative to the scale of the company. Whether that specific ratio holds over time is less important than the principle: once workflows are designed well, a small number of strong people can create disproportionate output.
+              This expands Sparq from point implementation into the service arm for responsible AI growth, trust and governance, AI control plane design, model tuning, reliability, and cost tracking across multiple LLM vendors and multi-agent workflows.
+            </div>
+            <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
+              That is what makes the relationship durable. Sparq is not just helping launch AI. It is helping customers modernize responsibly and keep improving the operating system over time.
             </div>
           </div>
         </section>
