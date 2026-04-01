@@ -47,11 +47,12 @@ const sparqPositioning = [
 ];
 
 const questions = [
-  'Which business outcomes matter most right now, lead generation growth, conversion rate, CSAT improvement, service response time, margin, retention, or something else, and which workflows drive them?',
+  'Which business outcomes matter most right now, and which workflows drive them?',
   'What specific granular actions inside those workflows can be automated or improved with AI?',
+  'How can Sparq create a repeatable GTM playbook to workshop the highest-leverage workflows with customers quickly, estimate ROI, implement fast, and do it in a trusted way?',
   'What signals, patterns, anomalies, or next-best actions can AI detect better or faster than humans?',
-  'Which workflows should be built next to create the highest leverage for the business and the people running it?',
   'How should success be measured so the conversation stays tied to better business outcomes, not generic AI efficiency claims?',
+  'Once those outcomes are tracked, how can Sparq price against them in a way that aligns with customer success?',
 ];
 
 function SectionHeader({ title }: { title: string }) {
