@@ -5,52 +5,52 @@ export const metadata: Metadata = {
   description: 'A concise strategic thesis for how Sparq can sharpen its GTM around the shift from hiring roles to designing workflows.',
 };
 
-const thesis = `The old way of growing a company is role-based. Leaders ask, what kind of role do we need to hire next? The new way is workflow-based. Leaders ask, what workflows do we need to build, redesign, and automate to create the highest-leverage output? Over the next 12 to 24 months, the most important AI shift will not just be better models. It will be this change in management thinking, from adding headcount to building smarter operating systems. Sparq has a real opportunity to own that message.`;
+const thesis = `The old way of scaling a company was headcount-first because output was limited by human bandwidth. Leaders were always asking the same question: who is the next hire that gives us the most leverage? That made sense in a world where most workflows were manual, fragmented, and dependent on people to move work across the business. The new way is workflow-first. The better question is which workflows drive the most important KPIs, which specific actions inside those workflows can be automated or improved with AI, what kinds of signal detection and pattern recognition AI can perform better than humans, and which workflows should be built next to create the most leverage. The goal is not automation for its own sake. It is to give strong people better systems so they can generate much more output with better control. The biggest AI shift over the next 12 to 24 months will not just be better models. It will be this change in management thinking, from adding headcount to building smarter operating systems. The companies that win will move their KPIs faster because their workflows are designed better. Sparq has a real opportunity to lead that conversation.`;
 
 const oldVsNew = [
   {
-    title: 'Old way: Hire for the role',
-    body: 'Growth has traditionally meant adding people. Another SDR. Another analyst. Another coordinator. Another ops hire. The assumption is that more output comes from more headcount layered into the system.',
+    title: 'Old way: Find the next hire',
+    body: 'When growth stalled or demand increased, leaders usually asked who they needed to hire next to create the most leverage. More capacity meant more people layered into the system.',
   },
   {
-    title: 'New way: Design for the workflow',
-    body: 'The better question is not who else should be added. It is which workflows matter most, where they break, and how they should be redesigned using AI, automation, and human judgment to create more output with better control.',
+    title: 'New way: Find the next workflow',
+    body: 'The better question is which workflow moves the KPI, which specific actions inside it can be improved with AI, and which workflow should be built next to create the most leverage.',
   },
   {
-    title: 'Old way: Optimize the org chart',
-    body: 'The focus stays on functions, roles, and reporting lines. That often increases cost faster than leverage and does not force enough thinking about how work actually moves.',
+    title: 'Old way: Scale through human bandwidth',
+    body: 'Output was constrained by how much work people could manually process, coordinate, route, review, and follow up on across the business.',
   },
   {
-    title: 'New way: Optimize the operating system',
-    body: 'The focus shifts to decisions, actions, handoffs, approvals, exception paths, and the places where work slows down. That is where AI can create real leverage.',
+    title: 'New way: Scale through smarter operating systems',
+    body: 'Output grows when AI handles the right actions, detects the right signals and patterns, and gives each strong operator better systems to direct and improve.',
   },
 ];
 
 const marketChanges = [
-  'Companies will increasingly stop asking, how do we make each employee a little more productive, and start asking, which workflows drive the most important outcomes in the business?',
-  'This means AI budgets will move away from shallow role-based assistants and toward systems that improve cycle time, throughput, conversion, quality, margin, service levels, and speed of execution.',
-  'It also means workflow design will matter more than prompt design. The biggest gains will come from understanding how work flows across teams and systems, not from isolated AI features.',
-  'Once the right workflows are built, the role does not disappear. It becomes more leveraged. One person can manage, direct, and improve AI-powered workflows to generate far more output than the old model allowed.',
-  'That is why some of the most advanced AI-native companies can run surprisingly lean. A useful signal is Anthropic, where public commentary has highlighted an extremely small marketing team relative to its scale. The point is not to copy a headcount number blindly. The point is that well-designed workflows let a small number of strong operators produce disproportionate output.',
-  'As AI moves into real workflows, security, governance, observability, and human control become critical because the stakes are higher when AI touches live operations.',
-  'The winners in AI services will be the firms that help enterprises make this shift in thinking, from headcount-first scaling to workflow-first scaling.',
+  'Companies will increasingly stop asking how to make each individual role slightly more productive and start asking which workflows most directly move their core KPIs.',
+  'This shifts investment away from shallow role-based assistants and toward workflow systems that improve cycle time, throughput, conversion, quality, margin, service levels, and speed of execution.',
+  'The real AI advantage will come from getting more granular, identifying the specific actions inside a workflow that can be accelerated, automated, or improved with AI.',
+  'Another major advantage will come from signal detection and pattern recognition. AI can surface patterns, anomalies, timing signals, and next-best actions across fragmented systems faster than humans can on their own.',
+  'Once the right workflows are built, the role becomes more leveraged. One strong operator can supervise, direct, and continuously improve AI-powered workflows and generate far more output than the old model allowed.',
+  'That is why some AI-native companies can run surprisingly lean. A useful signal is Anthropic, where public commentary has pointed to an extremely small marketing function relative to the scale of the company. The point is not the exact number. The point is that better workflows create disproportionate output.',
+  'As AI moves into real workflows, governance, security, observability, and human control become more important because the stakes rise when AI is tied to live operations and KPI movement.',
 ];
 
 const sparqPositioning = [
-  'Sparq is well positioned because its brand already points toward the hard operational work inside enterprises, not surface-level productivity tools.',
-  'Its wedge is helping customers identify the workflows most tied to growth, margin, throughput, uptime, and risk, then redesigning those workflows with AI and automation.',
-  'That lets Sparq sell something much more strategic than AI experimentation. It can help customers build a smarter operating model.',
-  'The goal is not to eliminate people. It is to make the people in each role dramatically more effective by giving them better workflows to operate, supervise, and improve.',
-  'Sparq can guide customers through a clear motion: identify the workflow, break it into decisions and actions, find the friction, decide what should be automated or governed, deploy safely, and measure the business result.',
-  'In plain English, Sparq can help enterprises move from asking what role to hire next to asking what workflow to build next, so each role can produce much more with less.',
+  'Sparq is well positioned because its brand already points toward the hard operational work inside enterprises, not surface-level productivity theater.',
+  'Its wedge is helping customers identify the workflows most tied to growth, margin, throughput, uptime, and risk, then going one level deeper into the specific actions, signals, and decisions inside those workflows.',
+  'That gives Sparq a stronger story than generic AI services. It is not just helping clients experiment with AI. It is helping them build smarter operating systems.',
+  'Sparq can help customers determine what AI should detect, what AI should automate, what should remain human, and what workflow should be prioritized next for the highest leverage.',
+  'The goal is not to replace people. It is to make each strong person far more effective by surrounding them with better workflows, better signals, and better control.',
+  'In plain English, Sparq can help enterprises move from asking what role to hire next to asking what workflow to build next, so the business moves its KPIs faster with better outcomes.',
 ];
 
 const questions = [
-  'Where are companies still thinking about growth through headcount when they should be thinking through workflows?',
-  'Which workflows in a customer environment matter most to revenue, margin, throughput, service, or risk?',
-  'Inside those workflows, what decisions, actions, handoffs, and exceptions create the most friction or waste?',
-  'What parts of those workflows should remain human, what parts should be AI-assisted, and what parts should be automated outright?',
-  'How should success be measured at the workflow level so the conversation stays tied to real business outcomes instead of generic efficiency claims?',
+  'Which workflows drive the most important KPIs in the business today?',
+  'What specific granular actions inside those workflows can be automated or improved with AI?',
+  'What signals, patterns, anomalies, or next-best actions can AI detect better or faster than humans?',
+  'Which workflows should be built next to create the highest leverage for the business and the people running it?',
+  'How should success be measured so the conversation stays tied to KPI movement and better business outcomes, not generic AI efficiency claims?',
 ];
 
 function SectionHeader({ title }: { title: string }) {
