@@ -30,6 +30,8 @@ const marketChanges = [
   'Companies will increasingly stop asking, how do we make each employee a little more productive, and start asking, which workflows drive the most important outcomes in the business?',
   'This means AI budgets will move away from shallow role-based assistants and toward systems that improve cycle time, throughput, conversion, quality, margin, service levels, and speed of execution.',
   'It also means workflow design will matter more than prompt design. The biggest gains will come from understanding how work flows across teams and systems, not from isolated AI features.',
+  'Once the right workflows are built, the role does not disappear. It becomes more leveraged. One person can manage, direct, and improve AI-powered workflows to generate far more output than the old model allowed.',
+  'That is why some of the most advanced AI-native companies can run surprisingly lean. A useful signal is Anthropic, where public commentary has highlighted an extremely small marketing team relative to its scale. The point is not to copy a headcount number blindly. The point is that well-designed workflows let a small number of strong operators produce disproportionate output.',
   'As AI moves into real workflows, security, governance, observability, and human control become critical because the stakes are higher when AI touches live operations.',
   'The winners in AI services will be the firms that help enterprises make this shift in thinking, from headcount-first scaling to workflow-first scaling.',
 ];
@@ -38,8 +40,9 @@ const sparqPositioning = [
   'Sparq is well positioned because its brand already points toward the hard operational work inside enterprises, not surface-level productivity tools.',
   'Its wedge is helping customers identify the workflows most tied to growth, margin, throughput, uptime, and risk, then redesigning those workflows with AI and automation.',
   'That lets Sparq sell something much more strategic than AI experimentation. It can help customers build a smarter operating model.',
+  'The goal is not to eliminate people. It is to make the people in each role dramatically more effective by giving them better workflows to operate, supervise, and improve.',
   'Sparq can guide customers through a clear motion: identify the workflow, break it into decisions and actions, find the friction, decide what should be automated or governed, deploy safely, and measure the business result.',
-  'In plain English, Sparq can help enterprises move from asking what role to hire next to asking what workflow to build next.',
+  'In plain English, Sparq can help enterprises move from asking what role to hire next to asking what workflow to build next, so each role can produce much more with less.',
 ];
 
 const questions = [
@@ -103,6 +106,21 @@ export default function SparqGtmReinventionPage() {
                 {item}
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-[1.75rem] border border-orange-200 bg-[#fff7ef] p-8 shadow-[0_12px_40px_rgba(249,115,22,0.08)]">
+          <SectionHeader title="What happens to the role after the workflow is built" />
+          <div className="mt-6 space-y-4">
+            <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
+              The role becomes more leveraged, not less important. Once the workflow exists, the person in that role can direct, supervise, refine, and improve AI-powered execution instead of manually carrying every step themselves.
+            </div>
+            <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
+              That means one strong operator can often produce much more output, manage more surface area, and make better decisions because the surrounding system is doing more of the repetitive, fragmented, and low-leverage work.
+            </div>
+            <div className="rounded-2xl border border-orange-100 bg-white/85 px-5 py-4 text-base leading-8 text-stone-700">
+              A useful signal is Anthropic, where public commentary has pointed to an extremely lean marketing function relative to the scale of the company. Whether that specific ratio holds over time is less important than the principle: once workflows are designed well, a small number of strong people can create disproportionate output.
+            </div>
           </div>
         </section>
 
