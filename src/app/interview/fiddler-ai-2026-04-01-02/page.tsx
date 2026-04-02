@@ -255,6 +255,59 @@ const finalCram = [
   'Pick 3 questions to ask and stop cramming.',
 ];
 
+const nextRoundPlans = [
+  {
+    title: 'Tomorrow morning, AE panel with Alex + AEs',
+    objective: 'Show that you make AEs better. They should leave thinking you improve discovery, qualification, technical storytelling, and deal movement.',
+    tone: 'Collaborative, field-oriented, sharp, and practical. Less theory, more what helps the field win.',
+    whatToEmphasize: [
+      'You help earn the right to demo through strong discovery.',
+      'You use technical conversations to create qualification signal, not just customer excitement.',
+      'You understand MEDDPICC and how to uncover decision criteria, pain, and process early.',
+      'You care about whether the AE leaves with a more qualified, more actionable opportunity.',
+      'You know how to speak in the customer’s language instead of giving a harbor-cruise demo.',
+    ],
+    likelyQuestions: [
+      'What makes a strong AE-SE partnership?',
+      'How do you decide when a deal is actually qualified?',
+      'What do you do when an AE wants to jump too fast to demo?',
+      'How do you help move technical deals forward?',
+      'What do you want AEs to know about working with you?',
+    ],
+    strongestStories: [
+      'Win-rate improvement from 16% to 43% through stronger qualification and POCs.',
+      'F50 expansion story to show business-value alignment and deal support.',
+      'Partner-led product and services motion to show cross-functional selling and expansion leverage.',
+    ],
+    keyMessage: 'I make the field motion sharper by turning technical work into deal signal, customer clarity, and stronger qualification.',
+  },
+  {
+    title: 'Tomorrow afternoon, SE panel with the team',
+    objective: 'Show that you are actually one of them. They should leave thinking you are credible, low-ego, customer-facing, and strong enough technically to win trust fast.',
+    tone: 'Technical, calm, thoughtful, and low-ego. More peer-level and operator-level than executive-level.',
+    whatToEmphasize: [
+      'A great SE makes complex buying decisions feel clear.',
+      'Discovery earns the right to demo.',
+      'Demos should be shaped to the customer’s world, not driven by a feature tour.',
+      'A strong SE balances technical credibility with business clarity.',
+      'The customer should leave with confidence, and the internal team should leave with more signal.',
+    ],
+    likelyQuestions: [
+      'How technical are you really?',
+      'What makes a great SE?',
+      'What makes a great demo?',
+      'How do you handle skeptical technical buyers?',
+      'How do you balance technical depth with customer clarity?',
+    ],
+    strongestStories: [
+      'Top-five global banks story for technical trust, governance, and scrutiny.',
+      'Win-rate improvement story for discovery, demos, and repeatability.',
+      'AI workflow leverage story to show you understand systems and how to create operational leverage.',
+    ],
+    keyMessage: 'I turn technical proof into buyer conviction while keeping the customer, the AE, and the technical team aligned on what matters.',
+  },
+];
+
 export default function FiddlerInterviewPrepPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -467,6 +520,59 @@ export default function FiddlerInterviewPrepPage() {
                 <li key={item} className="flex gap-3"><span className="mt-1 text-rose-300">•</span><span>{item}</span></li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-semibold text-white">Next round game plans</h2>
+          <div className="mt-5 space-y-6">
+            {nextRoundPlans.map((plan) => (
+              <div key={plan.title} className="rounded-2xl border border-slate-800 bg-slate-950 p-6">
+                <h3 className="text-xl font-semibold text-cyan-300">{plan.title}</h3>
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4">
+                    <h4 className="font-semibold text-white">Objective</h4>
+                    <p className="mt-2 leading-7 text-slate-300">{plan.objective}</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4">
+                    <h4 className="font-semibold text-white">Tone</h4>
+                    <p className="mt-2 leading-7 text-slate-300">{plan.tone}</p>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-6 lg:grid-cols-2">
+                  <div>
+                    <h4 className="font-semibold text-white">What to emphasize</h4>
+                    <ul className="mt-3 space-y-3 text-slate-300">
+                      {plan.whatToEmphasize.map((item) => (
+                        <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Likely questions</h4>
+                    <ul className="mt-3 space-y-3 text-slate-300">
+                      {plan.likelyQuestions.map((item) => (
+                        <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+                  <div>
+                    <h4 className="font-semibold text-white">Best stories to use</h4>
+                    <ul className="mt-3 space-y-3 text-slate-300">
+                      {plan.strongestStories.map((item) => (
+                        <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-4">
+                    <h4 className="font-semibold text-white">Key message</h4>
+                    <p className="mt-2 leading-7 text-slate-200">{plan.keyMessage}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
