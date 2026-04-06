@@ -85,6 +85,22 @@ const biggerHouseRequirements = [
   'The house should still leave meaningful monthly surplus for investing, vacations, repairs, and future kids.',
 ];
 
+const kidsComfort = [
+  'Credit card debt should be gone before trying for kids.',
+  'Vy’s mom should be paid back or on a very clear final payoff path.',
+  'Emergency savings should cover at least 6 to 12 months of real expenses.',
+  'The household should still work if Vy leaves her job or pauses work temporarily.',
+  'Monthly surplus should remain healthy even after adding baby costs and future childcare.',
+  'House payment needs to feel safe, not survivable only if everything goes perfectly.',
+];
+
+const kidsBudget = [
+  'Baby and medical setup costs: plan for a one-time $5K to $10K buffer.',
+  'Ongoing baby costs before daycare: roughly $500 to $1,000/month.',
+  'Future daycare could easily add $1.5K to $2.5K+/month depending on timing and location.',
+  'Before trying for kids, the plan should still show at least $3K to $5K/month surplus in a conservative case.',
+];
+
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
@@ -159,6 +175,24 @@ export default function FamilyFinancialPlanPage() {
           <Card title="What would make an $800K to $1M house responsible">
             <ul className="space-y-3 text-slate-300">
               {biggerHouseRequirements.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <Card title="What makes kids in the next 2 years feel safe">
+            <ul className="space-y-3 text-slate-300">
+              {kidsComfort.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+
+          <Card title="Kids budget reality">
+            <ul className="space-y-3 text-slate-300">
+              {kidsBudget.map((item) => (
                 <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
               ))}
             </ul>
