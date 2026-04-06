@@ -13,6 +13,13 @@ const opener = [
   'I can help grow strategic accounts, but I also think I can help Barry and the team sharpen that broader motion.'
 ];
 
+const gtmThesis = [
+  'Old way: sell projects and add headcount. New way: help clients redesign the workflows tied to their most important KPIs.',
+  'Sparq should lead with workflow reinvention, not generic AI services. The conversation should start with business outcomes, then identify the actions, signals, and decisions inside those workflows where AI creates leverage.',
+  'That gives Sparq a much stronger story: not helping clients experiment with AI, helping them build smarter operating systems.',
+  'Over time, Sparq can turn that into a repeatable GTM motion, faster deal cycles, stronger executive relevance, and reusable agentic solutions across accounts.',
+];
+
 const derek = {
   objective: 'Get Derek thinking: Jamie can help us shape GTM for AI, not just manage accounts.',
   push: [
@@ -65,6 +72,15 @@ const punchyAnswers = [
   },
 ];
 
+const greatQuestions = [
+  'As Sparq looks at the next 12 to 24 months, where do you think the GTM motion needs to evolve most to capture the AI opportunity?',
+  'Where do your best strategic opportunities tend to get hardest today, executive alignment, solution definition, or delivery confidence?',
+  'If this hire exceeded expectations, where would you want them creating leverage beyond managing accounts?',
+  'How are you thinking about balancing strategic account growth with broader GTM innovation and repeatability?',
+  'What would make someone in this role an obvious win for Sparq in the first 6 to 12 months?',
+  'As you think about AI and agentic workflows, where do you see the biggest commercial opportunity for Sparq to differentiate?',
+];
+
 const reminders = [
   'Keep it practical, not theoretical.',
   'Do not sound title-driven.',
@@ -105,6 +121,16 @@ export default function SparqInterviewPrepPage() {
           <Card title="Your proof points">
             <ul className="space-y-3 text-slate-300">
               {proof.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+
+        <div className="mt-6">
+          <Card title="Your GTM thesis for Sparq">
+            <ul className="space-y-3 text-slate-300">
+              {gtmThesis.map((item) => (
                 <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
               ))}
             </ul>
@@ -164,6 +190,14 @@ export default function SparqInterviewPrepPage() {
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <Card title="Great questions to ask">
+            <ul className="space-y-3 text-slate-300">
+              {greatQuestions.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+
           <Card title="Punchy answers">
             <div className="space-y-4">
               {punchyAnswers.map((item) => (
@@ -174,7 +208,9 @@ export default function SparqInterviewPrepPage() {
               ))}
             </div>
           </Card>
+        </div>
 
+        <div className="mt-6">
           <Card title="Live reminders">
             <ul className="space-y-3 text-slate-300">
               {reminders.map((item) => (
