@@ -66,6 +66,14 @@ const priorities = [
   'Replace cars carefully, not emotionally',
 ];
 
+const strategicPlan = [
+  'Use Fiddler as the stable foundation, cash flow, benefits, and equity upside.',
+  'Use Sparq as a first advisory client and proof point for a future fractional GTM business.',
+  'Avoid relying on extra retainers for survival. Treat them as upside that accelerates savings and flexibility.',
+  'Spend the next 12 months building safety first, then optionality.',
+  'Focus on creating leverage and repeatable value, not random side work.',
+];
+
 const reasonable = [
   '$575K to $650K house = conservative and smart',
   '$650K to $725K house = comfortable stretch',
@@ -136,6 +144,16 @@ export default function FamilyFinancialPlanPage() {
           <Card title="Main priorities for the next 12 months">
             <ul className="space-y-3 text-slate-300">
               {priorities.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+
+        <div className="mt-6">
+          <Card title="The broader strategy behind this plan">
+            <ul className="space-y-3 text-slate-300">
+              {strategicPlan.map((item) => (
                 <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
               ))}
             </ul>
