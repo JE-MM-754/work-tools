@@ -22,11 +22,23 @@ const gtmThesis = [
 
 const derek = {
   objective: 'Get Derek thinking: Jamie can help us shape GTM for AI, not just manage accounts.',
+  opening: 'I see a real opening for Sparq to evolve the GTM motion around workflow reinvention and agentic systems, not just generic AI services. That is part of what makes this opportunity interesting to me.',
   push: [
     'workflow reinvention over headcount',
     'agentic systems tied to real business outcomes',
     'bridge field signal, solution design, and delivery confidence',
     'help Sparq define a stronger AI-native enterprise story',
+  ],
+  likelyQuestions: [
+    'Why are you interested in Sparq?',
+    'How do you think about AI and agentic systems commercially?',
+    'How would you add value beyond the current role definition?',
+    'How do you work with technical and delivery leaders?',
+  ],
+  bestAnswers: [
+    'Sparq is compelling because it can bridge strategy, execution, and trusted delivery in a market that is moving toward workflow transformation.',
+    'I have actually built multi-agent GTM systems, so I can speak credibly about what works and how to position it commercially.',
+    'I can help grow accounts, but I also think I can help Sparq sharpen how it positions and sells AI-led transformation.',
   ],
   ask: [
     'Where does Sparq need the most GTM reinvention for the AI wave?',
@@ -37,11 +49,23 @@ const derek = {
 
 const brian = {
   objective: 'Get Brian thinking: Jamie can help grow revenue in a way that is more repeatable and operationally sound.',
+  opening: 'What is most interesting to me is not just helping Sparq grow strategic accounts, but helping shape a more repeatable GTM motion around where the market is going with AI and workflow redesign.',
   push: [
     'quality of revenue, not just bookings',
     'repeatable GTM and cleaner qualification',
     'strategic accounts plus broader commercial leverage',
     'help leadership define a role with wider impact',
+  ],
+  likelyQuestions: [
+    'Why this role?',
+    'How do you think about scaling enterprise growth?',
+    'What do you bring beyond a normal client partner?',
+    'How would you work with leadership on GTM evolution?',
+  ],
+  bestAnswers: [
+    'I am at my best when I am helping not just win revenue, but improve the system around how complex deals get qualified and executed.',
+    'I care about quality of revenue and repeatability, not just bookings.',
+    'I think I can create leverage for Sparq beyond individual account ownership by helping modernize the GTM around the AI wave.',
   ],
   ask: [
     'Where is the biggest opportunity to make the commercial motion more repeatable?',
@@ -97,6 +121,87 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
+function ExpandablePlan({
+  title,
+  subtitle,
+  data,
+}: {
+  title: string;
+  subtitle: string;
+  data: {
+    objective: string;
+    opening: string;
+    push: string[];
+    likelyQuestions: string[];
+    bestAnswers: string[];
+    ask: string[];
+  };
+}) {
+  return (
+    <details className="rounded-2xl border border-slate-800 bg-slate-900 p-5" open>
+      <summary className="cursor-pointer list-none">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold text-white">{title}</h2>
+            <p className="mt-1 text-sm text-slate-400">{subtitle}</p>
+          </div>
+          <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+            Expand
+          </span>
+        </div>
+      </summary>
+
+      <div className="mt-5 space-y-5">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Objective</p>
+          <p className="mt-2 text-slate-200">{data.objective}</p>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Suggested opening</p>
+          <p className="mt-2 text-slate-200">{data.opening}</p>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Themes to push</p>
+          <ul className="mt-2 space-y-2 text-slate-300">
+            {data.push.map((item) => (
+              <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Likely questions</p>
+          <ul className="mt-2 space-y-2 text-slate-300">
+            {data.likelyQuestions.map((item) => (
+              <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Good answer angles</p>
+          <ul className="mt-2 space-y-2 text-slate-300">
+            {data.bestAnswers.map((item) => (
+              <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Best questions to ask</p>
+          <ul className="mt-2 space-y-2 text-slate-300">
+            {data.ask.map((item) => (
+              <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </details>
+  );
+}
+
 export default function SparqInterviewPrepPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -137,56 +242,9 @@ export default function SparqInterviewPrepPage() {
           </Card>
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <Card title="Derek, CTO">
-            <div className="space-y-5">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Objective</p>
-                <p className="mt-2 text-slate-200">{derek.objective}</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Push these themes</p>
-                <ul className="mt-2 space-y-2 text-slate-300">
-                  {derek.push.map((item) => (
-                    <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Best questions</p>
-                <ul className="mt-2 space-y-2 text-slate-300">
-                  {derek.ask.map((item) => (
-                    <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </Card>
-
-          <Card title="Brian, COO">
-            <div className="space-y-5">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Objective</p>
-                <p className="mt-2 text-slate-200">{brian.objective}</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Push these themes</p>
-                <ul className="mt-2 space-y-2 text-slate-300">
-                  {brian.push.map((item) => (
-                    <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Best questions</p>
-                <ul className="mt-2 space-y-2 text-slate-300">
-                  {brian.ask.map((item) => (
-                    <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </Card>
+        <div className="mt-6 space-y-6">
+          <ExpandablePlan title="Full Call Plan, Derek" subtitle="CTO" data={derek} />
+          <ExpandablePlan title="Full Call Plan, Brian" subtitle="COO" data={brian} />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
