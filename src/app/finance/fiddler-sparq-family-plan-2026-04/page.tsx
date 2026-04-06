@@ -74,6 +74,17 @@ const reasonable = [
   'Buy one car first, not both at once, unless cash gets very strong',
 ];
 
+const biggerHouseRequirements = [
+  'Household income needs to be consistently in the $500K+ range, ideally with Fiddler + Sparq + at least one additional durable retainer.',
+  'Cash on hand for down payment, closing costs, and furnishing should likely be at least $175K to $250K, not pulled recklessly from retirement accounts.',
+  'Emergency reserves should still remain healthy after closing, ideally 6+ months of true living costs.',
+  'Remaining consumer debt should be minimal, especially credit card balances and family debt.',
+  'Total housing payment should feel manageable even if one retainer disappears or Vy stops working.',
+  'Furniture and setup costs should be pre-planned in cash, not casually added to cards after closing.',
+  'Two-car payments would need to stay controlled, or one car should be low payment or owned outright.',
+  'The house should still leave meaningful monthly surplus for investing, vacations, repairs, and future kids.',
+];
+
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
@@ -145,6 +156,16 @@ export default function FamilyFinancialPlanPage() {
             </ul>
           </Card>
 
+          <Card title="What would make an $800K to $1M house responsible">
+            <ul className="space-y-3 text-slate-300">
+              {biggerHouseRequirements.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-emerald-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+
+        <div className="mt-6">
           <Card title="Simple message for Vy">
             <div className="space-y-3 text-slate-300">
               <p>
