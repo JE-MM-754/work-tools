@@ -40,7 +40,9 @@ const operatorThesis = [
 const advisoryAngle = [
   'Do not pitch this as a fallback because the current openings are not perfect.',
   'Pitch it as a cleaner, faster, and higher-leverage way to work together around a real strategic need.',
+  'Be explicit that advisory or consulting is the structure, not the limit of the work.',
   'Frame it as operational, not just strategic, designing GTM systems, sharpening messaging, supporting strategic deals, and acting as a fractional sales operator where useful.',
+  'Say clearly that you can still operate on the team while helping define the system around it.',
   'The clean structure is a fractional GTM and AI advisory role with defined priorities, clear workstreams, and measurable value.',
   'If pricing comes up, a $10K/month retainer is the right anchor for a defined high-value scope.',
 ];
@@ -69,8 +71,9 @@ const questionsToAsk = [
 
 const close = [
   'The cleanest framing is that I can help in a way that is broader than the open roles and more immediately useful than forcing a narrow fit.',
-  'If there is mutual interest, a fractional GTM and AI advisory structure gives Sparq a way to capture that value quickly.',
-  'That work can still be operational, GTM systems, playbooks, strategic deal support, and even fractional selling where useful, while staying bounded and high leverage.',
+  'If there is mutual interest, a fractional GTM and AI advisory or consulting structure gives Sparq a way to capture that value quickly.',
+  'That structure is simply the vehicle. The work itself can still be operational, GTM systems, playbooks, strategic deal support, and even fractional selling where useful.',
+  'That is what makes this a flexible high-leverage operator role, not just generic consulting hours.',
 ];
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
