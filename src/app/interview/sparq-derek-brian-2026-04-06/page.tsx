@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Sparq Interview Prep',
-  description: 'Live-call prep for Jamie Erickson ahead of Sparq conversations with Derek Perry and Brian Carter.',
+  description: 'Live-call prep for Jamie Erickson ahead of Sparq conversations with Derek Perry, Brian Carter, and Ingrid Curtis.',
 };
 
 const topMessage = 'I can do the Senior Client Partner job, but the bigger value is helping Sparq modernize GTM for the AI agentic wave.';
@@ -71,6 +71,34 @@ const brian = {
     'Where is the biggest opportunity to make the commercial motion more repeatable?',
     'What would make this hire a clear win in the first 6 to 12 months?',
     'How are you thinking about account ownership versus broader strategic leverage in this role?',
+  ],
+};
+
+const ingrid = {
+  objective: 'Get Ingrid thinking that the highest-value fit is a flexible operator role that helps Sparq sharpen AI-first GTM, not a narrow predefined seat.',
+  opening: 'What stood out from my conversations today is that Sparq has a real opportunity to sharpen how it goes to market in this AI-first era. The value I can bring feels broader than a standard open role because it spans GTM systems, playbooks, strategic deals, and operational leverage.',
+  push: [
+    'Sparq is an outcomes-focused consultancy, so the GTM should lead with workflow reinvention and measurable business impact.',
+    'The value here is cross-functional, sharper messaging, better playbooks, winning-language capture, AI-supported GTM operations, and stronger strategic selling.',
+    'Advisory or consulting can be the structure without making the work passive. The work can still be highly operational.',
+    'I can help design GTM systems, support strategic deals, and even act as a fractional sales operator where useful.',
+  ],
+  likelyQuestions: [
+    'What exactly would you do for us in this arrangement?',
+    'Why is this better than hiring into one of our current openings?',
+    'How would you make this practical and measurable?',
+    'What would success look like in the first 90 days?',
+  ],
+  bestAnswers: [
+    'I would start where the GTM motion has the most friction, where messaging is inconsistent, where solutioning is losing leverage, and where AI can quickly create repeatability.',
+    'This is better than forcing an open role because the opportunity is to sharpen the whole system, not just fill one seat.',
+    'A fractional GTM and AI advisory structure is just the vehicle. The work itself can still be operational, GTM systems, playbooks, strategic deal support, and fractional selling where useful.',
+    'The first 90 days should create clearer messaging, stronger enablement, more disciplined GTM execution, and reusable workflow patterns that can improve future client work.',
+  ],
+  ask: [
+    'As Sparq’s CEO, where do you feel the GTM motion most needs reinvention for the next wave of AI?',
+    'Where do you think Sparq has the biggest opportunity to differentiate commercially over the next 12 to 24 months?',
+    'If we designed a focused engagement around that, what outcomes would feel obviously valuable in the first 90 days?',
   ],
 };
 
@@ -208,7 +236,7 @@ export default function SparqInterviewPrepPage() {
       <div className="mx-auto max-w-5xl px-5 py-8 md:px-8 lg:px-10">
         <div className="mb-6 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/40 p-6">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Live call prep</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">Sparq, Derek + Brian</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">Sparq, Derek + Brian + Ingrid</h1>
           <p className="mt-4 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 px-4 py-3 text-lg font-medium leading-8 text-cyan-100">
             {topMessage}
           </p>
@@ -245,6 +273,7 @@ export default function SparqInterviewPrepPage() {
         <div className="mt-6 space-y-6">
           <ExpandablePlan title="Full Call Plan, Derek" subtitle="CTO" data={derek} />
           <ExpandablePlan title="Full Call Plan, Brian" subtitle="COO" data={brian} />
+          <ExpandablePlan title="Full Call Plan, Ingrid" subtitle="CEO" data={ingrid} />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
