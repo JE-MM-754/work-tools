@@ -5,64 +5,72 @@ export const metadata: Metadata = {
   description: 'Prep for Jamie Erickson ahead of his conversation with Ingrid Curtis at Sparq.',
 };
 
-const topMessage = 'The goal is to make Ingrid see a broader AI-first GTM advisory role, not force-fit Jamie into an open box.';
+const topMessage = 'The goal is to make Ingrid see a high-leverage operator role that can sharpen Sparq’s AI-first GTM, not force-fit Jamie into a narrow box.';
 
 const opener = [
-  'The biggest thing I took away from my conversations today is that Sparq has a real opportunity to lead the market in an AI-first GTM motion, not just by selling AI services, but by helping clients redesign important workflows and operational systems.',
-  'What stood out to me is that the value I can bring is broader than a standard solutions or client partner role.',
-  'I can help shape the GTM strategy, sharpen the field playbooks, operationalize winning language, and use AI systems to make the whole motion more repeatable and more effective.',
+  'What stood out to me from the conversations today is that Sparq has a real opportunity to sharpen how it goes to market in this AI-first era, not just by selling AI services, but by helping clients redesign important workflows and operating systems around outcomes.',
+  'The value I can bring feels broader than a standard open role. I can help shape GTM systems, sharpen field playbooks, improve how winning language gets captured and reused, and support strategic deals directly.',
+  'That is why I think the right structure may be something more flexible and high-leverage than trying to fit into a traditional box.'
 ];
 
 const whatIngridLikelyCaresAbout = [
-  'Can Jamie create strategic leverage beyond a single role?',
-  'Is there a realistic way to use him without forcing a bad full-time fit?',
-  'Can he help the company get sharper, faster, and more differentiated?',
-  'Does he think like an operator, not just a candidate?',
+  'Can Jamie help create long-term value, not just fill a seat?',
+  'Does he understand Sparq as an outcomes-focused consultancy, not just a services vendor?',
+  'Can he strengthen GTM while still supporting real client growth and execution?',
+  'Is there a clean way to use him without forcing a bad organizational fit?',
+  'Will this make Sparq stronger for clients and for the internal team?',
+];
+
+const ingridSpecific = [
+  'She has grown Sparq over more than 15 years and now leads it as CEO with a strong emphasis on outcomes, talent, and long-term value creation.',
+  'She has lived multiple chapters of the company, client services, operations, president, now CEO, so she will care about leverage across the whole system, not just one function.',
+  'She is likely to respond to practical ideas that improve growth, differentiation, team enablement, and client outcomes at the same time.',
+  'She will probably care less about a perfect title and more about whether the arrangement makes Sparq stronger and more scalable.',
 ];
 
 const operatorThesis = [
   'Redefine Sparq GTM to be AI first, workflow-first, and outcome-oriented.',
-  'Build playbooks for sales, solution consultants, and post-sales around vertical archetypes and buyer problems.',
-  'Use AI agents to extract winning language from calls and feed it back into messaging, playbooks, marketing, and enablement.',
-  'Reduce GTM admin drag through AI support for call prep, personalized call plans, MEDDPICC rigor, and forecasting hygiene.',
-  'Help customers workshop the highest-leverage AI workflows to implement, estimate ROI, break them into tasks, and build toward agentic solutions.',
-  'Productize repeatable workflows by industry so Sparq improves margins, speed to implementation, and consistency across customers.',
+  'Build sharper playbooks for sales, solution consultants, and post-sales around customer archetypes and industry-specific pain points.',
+  'Use AI agents to extract winning language from real calls and push it back into messaging, enablement, GTM assets, and marketing.',
+  'Reduce GTM admin drag using AI for call prep, personalized call plans, MEDDPICC rigor, and forecasting hygiene.',
+  'Help customers identify the highest-leverage AI workflows to implement, estimate ROI, break them into tasks, and move toward agentic operating models.',
+  'Productize what works across industries so Sparq improves speed, margins, and repeatability across clients.',
 ];
 
 const advisoryAngle = [
-  'Do not pitch this as a fallback because a full-time role is messy.',
-  'Pitch it as a high-leverage way to work together now around a strategic need that clearly exists.',
-  'The clean framing is a fractional GTM and AI advisory role focused on strategy, playbooks, messaging, workflow packaging, and strategic deal support.',
-  'If she engages, suggest a monthly retainer structure with clear scope and outcomes, not vague availability.',
-  'Anchor at $10K/month if pricing comes up, tied to defined scope and measurable strategic value.',
+  'Do not pitch this as a fallback because the current openings are not perfect.',
+  'Pitch it as a cleaner, faster, and higher-leverage way to work together around a real strategic need.',
+  'Frame it as operational, not just strategic, designing GTM systems, sharpening messaging, supporting strategic deals, and acting as a fractional sales operator where useful.',
+  'The clean structure is a fractional GTM and AI advisory role with defined priorities, clear workstreams, and measurable value.',
+  'If pricing comes up, a $10K/month retainer is the right anchor for a defined high-value scope.',
 ];
 
 const likelyQuestions = [
-  'What exactly would you do for us in this kind of role?',
-  'Why is this better than hiring into one of our current openings?',
-  'How would you make this practical and not just strategic theory?',
-  'How would you prioritize what to work on first?',
-  'How would you define success in the first 90 days?',
+  'What exactly would you do for us in this role or arrangement?',
+  'Why is this better than hiring into one of our existing openings?',
+  'How would you make this practical and measurable?',
+  'How would you prioritize where to start?',
+  'What would success look like in the first 90 days?',
 ];
 
 const answerAngles = [
-  'I would start by identifying where the current GTM motion breaks, where messaging is inconsistent, where sales and solutioning are losing leverage, and where AI can immediately create repeatability.',
-  'This is broader than one open role because the value is cross-functional. The opportunity is to sharpen the system, not just fill a seat.',
-  'I would keep it practical by focusing on a few immediate outputs, playbooks, winning-language extraction, AI-supported GTM workflows, and strategic customer workshop design.',
-  'The first 90 days should create visible leverage, clearer messaging, better enablement, stronger forecasting rigor, and one or two repeatable workflow patterns that can be reused.',
+  'I would start where the current GTM motion has the most friction, where messaging is inconsistent, where solutioning is losing leverage, and where AI can immediately create repeatability.',
+  'This is better than forcing an open role because the value is inherently cross-functional. The opportunity is to sharpen the system, not just fill a seat.',
+  'I would keep it measurable by focusing on concrete outputs, playbooks, winning-language capture, GTM workflows, strategic deal support, and one or two repeatable workflow patterns.',
+  'A strong first 90 days should create clearer messaging, better enablement, more disciplined GTM execution, and reusable workflow patterns that improve future client work.',
 ];
 
 const questionsToAsk = [
-  'Where do you feel the current GTM motion has the most friction today?',
-  'If Sparq were going to lead in this next AI wave, what would need to change about how the company positions and sells?',
-  'Where do you think the greatest opportunity is to create more repeatability across sales, solutioning, and delivery?',
-  'If we designed a focused advisory engagement around those priorities, what outcomes would feel most valuable to you in the first 90 days?',
+  'As you think about Sparq’s next chapter as an AI-first consultancy, where do you feel the GTM motion needs the most reinvention?',
+  'Where do you think Sparq has the biggest opportunity to differentiate commercially over the next 12 to 24 months?',
+  'What would make an engagement like this feel obviously valuable to you in the first 90 days?',
+  'If the goal is to create leverage across growth, client outcomes, and internal enablement, where would you want that to show up first?',
 ];
 
 const close = [
-  'The cleanest way to land this is: I can help in a way that is broader than the open roles and more immediately useful than trying to force-fit me.',
-  'If there is mutual interest, I would frame a fractional GTM and AI advisory engagement around a few clear priorities and workstreams.',
-  'This should feel strategic, bounded, and useful, not like random consulting hours.',
+  'The cleanest framing is that I can help in a way that is broader than the open roles and more immediately useful than forcing a narrow fit.',
+  'If there is mutual interest, a fractional GTM and AI advisory structure gives Sparq a way to capture that value quickly.',
+  'That work can still be operational, GTM systems, playbooks, strategic deal support, and even fractional selling where useful, while staying bounded and high leverage.',
 ];
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
@@ -71,6 +79,25 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
       <h2 className="text-xl font-semibold text-white">{title}</h2>
       <div className="mt-4">{children}</div>
     </div>
+  );
+}
+
+function ExpandableSection({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
+  return (
+    <details className="rounded-2xl border border-slate-800 bg-slate-900 p-5" open>
+      <summary className="cursor-pointer list-none">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold text-white">{title}</h2>
+            <p className="mt-1 text-sm text-slate-400">{subtitle}</p>
+          </div>
+          <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+            Expand
+          </span>
+        </div>
+      </summary>
+      <div className="mt-5">{children}</div>
+    </details>
   );
 }
 
@@ -102,6 +129,16 @@ export default function SparqIngridPrepPage() {
               ))}
             </ul>
           </Card>
+        </div>
+
+        <div className="mt-6">
+          <ExpandableSection title="Ingrid-specific read" subtitle="How to tune the conversation to her profile">
+            <ul className="space-y-3 text-slate-300">
+              {ingridSpecific.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </ExpandableSection>
         </div>
 
         <div className="mt-6">
