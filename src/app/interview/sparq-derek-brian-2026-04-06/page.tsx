@@ -75,30 +75,32 @@ const brian = {
 };
 
 const ingrid = {
-  objective: 'Get Ingrid thinking that the highest-value fit is a flexible operator role that helps Sparq sharpen AI-first GTM, not a narrow predefined seat.',
-  opening: 'What stood out from my conversations today is that Sparq has a real opportunity to sharpen how it goes to market in this AI-first era. The value I can bring feels broader than a standard open role because it spans GTM systems, playbooks, strategic deals, and operational leverage.',
+  objective: 'Build on the Derek and Brian conversations, spend most of the call on value and GTM friction, prove practical AI leverage from Unsupervised, and only then introduce the fractional advisory role.',
+  opening: 'My conversations with Derek and Brian made me more convinced that Sparq has a real opening to sharpen its GTM for this next AI wave. The biggest opportunity I see is improving how the company captures winning language, identifies GTM friction, and productizes high-leverage workflow solutions in a more repeatable way.',
   push: [
-    'Sparq is an outcomes-focused consultancy, so the GTM should lead with workflow reinvention and measurable business impact.',
-    'The value here is cross-functional, sharper messaging, better playbooks, winning-language capture, AI-supported GTM operations, and stronger strategic selling.',
-    'Advisory or consulting can be the structure without making the work passive. The work can still be highly operational.',
-    'I can help design GTM systems, support strategic deals, and even act as a fractional sales operator where useful.',
+    'Lead with value first, not structure or role design.',
+    'Ask where GTM friction is actually showing up today across sales, solutioning, and client conversations.',
+    'Talk about the specific agentic tools you built at Unsupervised that created leverage, not generic AI ideas.',
+    'Show how those same patterns could help Sparq improve messaging, playbooks, workflow discovery, and strategic selling.',
+    'Only after that, suggest a fractional advisory structure as the cleanest way to work together on those priorities.',
   ],
   likelyQuestions: [
-    'What exactly would you do for us in this arrangement?',
-    'Why is this better than hiring into one of our current openings?',
-    'How would you make this practical and measurable?',
-    'What would success look like in the first 90 days?',
+    'What kinds of tools have you actually built that created value?',
+    'How would those ideas apply to Sparq specifically?',
+    'Where would you start if you were helping us improve GTM?',
+    'What would you actually do in a fractional role?',
   ],
   bestAnswers: [
-    'I would start where the GTM motion has the most friction, where messaging is inconsistent, where solutioning is losing leverage, and where AI can quickly create repeatability.',
-    'This is better than forcing an open role because the opportunity is to sharpen the whole system, not just fill one seat.',
-    'A fractional GTM and AI advisory structure is just the vehicle. The work itself can still be operational, GTM systems, playbooks, strategic deal support, and fractional selling where useful.',
-    'The first 90 days should create clearer messaging, stronger enablement, more disciplined GTM execution, and reusable workflow patterns that can improve future client work.',
+    'At Unsupervised, the highest-value tools were the ones that reduced GTM drag, better call prep, clearer project classification, sharper follow-up, stronger visibility into what was happening in the field, and better leverage from existing knowledge.',
+    'For Sparq, I would start with GTM friction points, where messaging gets blurry, where good calls do not get turned into reusable language, where solutioning is inconsistent, and where AI could improve the speed and quality of preparation and qualification.',
+    'The reason this is interesting is not just efficiency. It is because those systems can make the whole GTM motion sharper and more repeatable while also helping Sparq package more reusable workflow solutions.',
+    'Once those opportunities are clear, the cleanest structure may be a fractional GTM and AI advisory role, but the work itself would still be highly operational and tied to measurable outputs.',
   ],
   ask: [
-    'As Sparq’s CEO, where do you feel the GTM motion most needs reinvention for the next wave of AI?',
-    'Where do you think Sparq has the biggest opportunity to differentiate commercially over the next 12 to 24 months?',
-    'If we designed a focused engagement around that, what outcomes would feel obviously valuable in the first 90 days?',
+    'Where do you feel the most GTM friction today, messaging, qualification, solutioning, follow-through, or something else?',
+    'What kinds of high-leverage improvements would matter most to you if they could be implemented quickly?',
+    'Where do you see the biggest opportunity to turn repeated client needs into more productized solutions or playbooks?',
+    'If those areas became clearer, would a focused fractional engagement around them be useful?',
   ],
 };
 
