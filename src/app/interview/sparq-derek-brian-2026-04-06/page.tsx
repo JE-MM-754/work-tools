@@ -102,6 +102,11 @@ const ingrid = {
     'Where do you see the biggest opportunity to turn repeated client needs into more productized solutions or playbooks?',
     'If those areas became clearer, would a focused fractional engagement around them be useful?',
   ],
+  closePitch: [
+    'The more I have learned, the more I think the highest-value fit here may be a focused fractional role rather than forcing a traditional box.',
+    'I think I could help Sparq quickly around GTM systems, AI-first playbooks, winning-language capture, and strategic deal support in a way that creates leverage across the whole motion.',
+    'If that is interesting, I would be excited to sketch a tight advisory engagement with clear priorities and measurable outputs so we can move fast and create value quickly.',
+  ],
 };
 
 const proof = [
@@ -165,6 +170,7 @@ function ExpandablePlan({
     likelyQuestions: string[];
     bestAnswers: string[];
     ask: string[];
+    closePitch?: string[];
   };
 }) {
   return (
@@ -227,6 +233,17 @@ function ExpandablePlan({
             ))}
           </ul>
         </div>
+
+        {data.closePitch && (
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Punchy close</p>
+            <ul className="mt-2 space-y-2 text-slate-300">
+              {data.closePitch.map((item) => (
+                <li key={item} className="flex gap-3"><span className="mt-1 text-cyan-300">•</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </details>
   );
